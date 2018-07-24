@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SignInBox correctly 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="login-box"
+  >
+    <h1
+      className="login-box__title"
+    >
+      Login Sportify
+    </h1>
+    <form
+      className="login-form"
+      onSubmit={[Function]}
+    >
+      <input
+        autoFocus={true}
+        onChange={[Function]}
+        placeholder="Email"
+        type="text"
+        value=""
+      />
+      <input
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <div
+        className="login__non-provider"
+      >
+        <button
+          className="login_email"
+          type="submit"
+        >
+          SIGN IN
+        </button>
+        <Link
+          className="signup"
+          replace={false}
+          to="/signup"
+        >
+          CREATE ACCOUNT
+        </Link>
+      </div>
+      <button
+        className="login__google"
+        onClick={[Function]}
+        type="button"
+      >
+        SIGN IN WITH GOOGLE
+      </button>
+    </form>
+  </div>
+</div>
+`;

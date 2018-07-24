@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SignInBox correctly 1`] = `
+<div
+  className="signup-page"
+>
+  <Header />
+  <Connect(SignupBox) />
+</div>
+`;

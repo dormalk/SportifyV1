@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DashboardPage correctly 1`] = `
+<div>
+  <p>
+    wellcome my frined
+  </p>
+  <button>
+    Logout
+  </button>
+</div>
+`;

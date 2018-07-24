@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SignInBox correctly 1`] = `
+<div
+  className="content-container"
+>
+  <form
+    className="signup-form"
+    onSubmit={[Function]}
+  >
+    <h2>
+      CREATE NEW ACCOUNT
+    </h2>
+    <label>
+      First Name:
+      <input
+        onChange={[Function]}
+        required={true}
+        type="text"
+      />
+    </label>
+    <label>
+      Last Name:
+      <input
+        onChange={[Function]}
+        required={true}
+        type="text"
+      />
+    </label>
+    <label>
+      Email:
+      <input
+        onChange={[Function]}
+        required={true}
+        type="text"
+      />
+    </label>
+    <label>
+      Password:
+      <input
+        onChange={[Function]}
+        required={true}
+        type="password"
+      />
+    </label>
+    <label>
+      Confirm Password:
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        required={true}
+        type="password"
+      />
+    </label>
+    <button
+      className="signup__box"
+    >
+      CREATE ACCOUNT
+    </button>
+  </form>
+</div>
+`;
