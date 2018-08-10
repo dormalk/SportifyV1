@@ -1,0 +1,35 @@
+.verification_box{
+    background: fade-out(white, .15);
+    border-radius: 3px;
+    margin: $l-size auto;
+    padding: 0;
+    text-align: center;
+    width:70rem;
+    box-shadow: 1px 1px 6px darken(grey,0.1);
+
+    h3{
+        margin: 0;
+        padding: 0;
+        background: $dark-grey;
+        color:white;
+        border-radius: 3px 3px 0 0;
+        padding: $s-size 0;
+        font-size: 1.8rem;
+    }
+
+    button{
+        background-color: $blue; 
+        border-bottom: 3px solid $dark-blue; 
+        margin: $s-size auto;
+    }
+
+    button:active{
+        background-color: darken($blue, 3); 
+        border-bottom: 2px solid $dark-blue; 
+    }
+
+    p{
+        font-size: 1.5rem;
+    }
+}
+
