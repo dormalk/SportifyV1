@@ -1,20 +1,21 @@
-import { firebase,storage } from '../firebase/firebase';
+import database,{ firebase } from '../firebase/firebase';
+import { Promise } from 'firebase';
 
 
 //ADD IMAGES
 export const startUploadImage = (picture) => {
     return (dispatch) => {
-        var storageRef = storage.ref();
+        var storageRef = firebase.storage().ref();
         var imagesRef = storageRef.child('images');
-        var fileRef = imagesRef().child(picture.name);
-
+        var fileRef = imagesRef.child(picture.name);
         return fileRef.put(picture).then(() => {
             return fileRef.getDownloadURL().then((url) => {
-                dispatch(startAddImage({src:url,name:this.state.picture.name})); 
+                dispatch(startAddImage({src:url,name:picture.name}));
+                return Promise.resolve(url);
             });
         });
-    }
-}
+    };
+};
 
 
 export const startAddImage = (ImageData) => {
@@ -24,7 +25,7 @@ export const startAddImage = (ImageData) => {
             name = ''
         } = ImageData;
         const image = {src,name};
-        database.ref('images').push(image).then((ref) => {
+        return database.ref('images').push(image).then((ref) => {
             dispatch(addImage({
                 id:ref.key,
                 ...image
@@ -72,7 +73,7 @@ export const removeImage = ({id}) => ({
 
 export const startRemoveImage = ({id = {}}) => {
     return(dispatch) => {
-        database.ref(`images/${id}`).remove().then(() => {
+        return database.ref(`images/${id}`).remove().then(() => {
             dispatch(removeImage({id}));
         });
     }

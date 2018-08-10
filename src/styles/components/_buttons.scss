@@ -1,10 +1,13 @@
+
 button{
     border: 0;
     background: none;
-    padding: $xs-size $m-size;
+    padding: $s-size $m-size;
     color:white;
     font-weight: bold;
     border-radius: 2px;
+    font-size: $font-size-large;
+
 }
 
 .login_email{
@@ -28,7 +31,7 @@ button{
     @extend button;
     background-color: $red; 
     border-bottom: 3px solid $dark-red; 
-    font-size: $s-size;
+    font-size: $font-size-large;
 }
 
 .login__google:active{
@@ -41,10 +44,16 @@ button{
     @extend button;
     background-color: $blue; 
     border-bottom: 3px solid $dark-blue; 
+    margin: auto auto;
+    width: 20vw;
 }
 
 .signup__box:active{
     @extend button;
     background-color: darken($blue, 3); 
     border-bottom: 2px solid $dark-blue; 
+}
+
+.button__upload{
+    background: black;
 }

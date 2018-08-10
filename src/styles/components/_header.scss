@@ -1,13 +1,26 @@
 .header{
     background-color: orange; 
     width: 100vw;
+    height: 10vh;
     margin: 0px;
-    padding: $m-size 0;
+    padding: $s-size 0;
+
+    button {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .header__title{
     margin: 0;
     padding: 0;
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
+    direction: ltr;
+}
+
+.justify-container{
+    display: flex;
+    justify-content: space-between;
+    direction: ltr;
 }

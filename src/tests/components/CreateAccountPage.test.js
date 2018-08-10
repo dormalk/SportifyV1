@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignupPage } from '../../components/SignupPage';
+import { CreateAccountPage } from '../../components/CreateAccountPage';
 
 test('should render SignInBox correctly', () => {
-    const wrapper = shallow(<SignupPage/>);
+    const wrapper = shallow(<CreateAccountPage/>);
     expect(wrapper).toMatchSnapshot();
 });
 

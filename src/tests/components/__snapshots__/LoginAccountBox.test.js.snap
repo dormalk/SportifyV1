@@ -10,7 +10,7 @@ exports[`should render SignInBox correctly 1`] = `
     <h1
       className="login-box__title"
     >
-      Login Sportify
+      התחברות לספורטיפיי
     </h1>
     <form
       className="login-form"
@@ -19,13 +19,13 @@ exports[`should render SignInBox correctly 1`] = `
       <input
         autoFocus={true}
         onChange={[Function]}
-        placeholder="Email"
+        placeholder="אימייל"
         type="text"
         value=""
       />
       <input
         onChange={[Function]}
-        placeholder="Password"
+        placeholder="סיסמא"
         type="password"
         value=""
       />
@@ -36,14 +36,14 @@ exports[`should render SignInBox correctly 1`] = `
           className="login_email"
           type="submit"
         >
-          SIGN IN
+          התחברות
         </button>
         <Link
           className="signup"
           replace={false}
           to="/signup"
         >
-          CREATE ACCOUNT
+          יצירת חשבון
         </Link>
       </div>
       <button
@@ -51,7 +51,7 @@ exports[`should render SignInBox correctly 1`] = `
         onClick={[Function]}
         type="button"
       >
-        SIGN IN WITH GOOGLE
+        התחברות עם גוגל
       </button>
     </form>
   </div>

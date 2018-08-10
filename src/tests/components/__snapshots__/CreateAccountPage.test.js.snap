@@ -4,7 +4,7 @@ exports[`should render SignInBox correctly 1`] = `
 <div
   className="signup-page"
 >
-  <Header />
-  <Connect(SignupBox) />
+  <Connect(Header) />
+  <Connect(CreateAccountForm) />
 </div>
 `;

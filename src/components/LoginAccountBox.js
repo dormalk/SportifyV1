@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import validator from 'validator';
 import { Link } from 'react-router-dom';
-import { startLoginOnGoogle } from '../actions/auth';
+import { startCreateAccountOnGoogle } from '../actions/user';
 import { startLoginOnEmail } from '../actions/auth';
 
-export class SignInBox extends React.Component{
+export class LoginAccountBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -45,27 +45,27 @@ export class SignInBox extends React.Component{
         return (
             <div className="content-container">
                 <div className="login-box">
-                    <h1 className="login-box__title">Login Sportify</h1>
+                    <h1 className="login-box__title">התחברות לספורטיפיי</h1>
                     {this.state.error && <p className="form__error">{this.state.error}</p>}
                     <form  className="login-form" onSubmit={this.onSubmit}>
                         <input 
                             type="text"
-                            placeholder="Email"
+                            placeholder="אימייל"
                             autoFocus
                             value={this.state.email}
                             onChange={this.onEmailInputChange}  
                         />
                         <input 
                             type="password"
-                            placeholder="Password"
+                            placeholder="סיסמא"
                             value={this.state.password}
                             onChange={this.onPasswordInputChange}  
                         />
                         <div className="login__non-provider">
-                            <button type="submit" className="login_email">SIGN IN</button>
-                            <Link className="signup" to="/signup">CREATE ACCOUNT</Link>
+                            <button type="submit" className="login_email">התחברות</button>
+                            <Link className="signup" to="/signup">יצירת חשבון</Link>
                         </div>
-                        <button type="button" className="login__google" onClick={this.props.startLoginOnGoogle}>SIGN IN WITH GOOGLE</button>
+                        <button type="button" className="login__google" onClick={this.props.startCreateAccountOnGoogle}>התחברות עם גוגל</button>
                     </form>
                 </div>
             </div>
@@ -76,9 +76,9 @@ export class SignInBox extends React.Component{
 
 
 const mapPropsToDispatch = (dispatch) => ({
-    startLoginOnGoogle: () => dispatch(startLoginOnGoogle()),
+    startCreateAccountOnGoogle: () => dispatch(startCreateAccountOnGoogle()),
     startLoginOnEmail: (email,password) => dispatch(startLoginOnEmail(email,password)),
 });
 
 
-export default connect(undefined,mapPropsToDispatch)(SignInBox);
+export default connect(undefined,mapPropsToDispatch)(LoginAccountBox);

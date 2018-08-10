@@ -5,8 +5,5 @@ exports[`should render DashboardPage correctly 1`] = `
   <p>
     wellcome my frined
   </p>
-  <button>
-    Logout
-  </button>
 </div>
 `;

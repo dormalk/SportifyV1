@@ -1,6 +1,3 @@
-import uuid from 'uuid';
-
-
 const imagesReducerDefault = [];
 
 export default (state = imagesReducerDefault,action) => {

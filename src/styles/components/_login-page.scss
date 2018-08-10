@@ -12,7 +12,7 @@
     border-radius: 3px;
     padding: $l-size $m-size;
     text-align: center;
-    width:30rem;
+    width:32rem;
     box-shadow: 1px 1px 6px darken(grey,0.1);
 }
 
@@ -33,6 +33,7 @@
 
 .login-box__title{
     margin:0 0 $s-size 0;
+    font-size: $font-size-x-large;
 }
 
 
@@ -40,17 +41,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top:$xs-size;
     button{
         width:100%;
-        font-size: $s-size;
+        font-size: $font-size-large;
     }
     button:first-child{
-        margin-right: $s-size/2; 
-        width:35%;
+        margin-left: $xs-size/2; 
+        width:40%;
     }
     button:nth-child(2){
-        margin-left: $s-size/2;
-        width:65%;
+        margin-right: $xs-size/2;
+        width:60%;
     }
 }
 
@@ -58,3 +60,4 @@
     margin: 0 0 $m-size 0;
     font-style: italic;
 }
+

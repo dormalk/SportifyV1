@@ -9,10 +9,10 @@ exports[`should render SignInBox correctly 1`] = `
     onSubmit={[Function]}
   >
     <h2>
-      CREATE NEW ACCOUNT
+      יצירת משתמש חדש
     </h2>
     <label>
-      First Name:
+      שם פרטי
       <input
         onChange={[Function]}
         required={true}
@@ -20,7 +20,7 @@ exports[`should render SignInBox correctly 1`] = `
       />
     </label>
     <label>
-      Last Name:
+      שם משפחה
       <input
         onChange={[Function]}
         required={true}
@@ -28,7 +28,7 @@ exports[`should render SignInBox correctly 1`] = `
       />
     </label>
     <label>
-      Email:
+      אימייל
       <input
         onChange={[Function]}
         required={true}
@@ -36,7 +36,7 @@ exports[`should render SignInBox correctly 1`] = `
       />
     </label>
     <label>
-      Password:
+      סיסמא
       <input
         onChange={[Function]}
         required={true}
@@ -44,7 +44,7 @@ exports[`should render SignInBox correctly 1`] = `
       />
     </label>
     <label>
-      Confirm Password:
+      אימות סיסמא
       <input
         onBlur={[Function]}
         onChange={[Function]}
@@ -52,10 +52,17 @@ exports[`should render SignInBox correctly 1`] = `
         type="password"
       />
     </label>
+    <lable>
+      תמונות פרופיל
+      <input
+        onChange={[Function]}
+        type="file"
+      />
+    </lable>
     <button
       className="signup__box"
     >
-      CREATE ACCOUNT
+      צור חשבון
     </button>
   </form>
 </div>

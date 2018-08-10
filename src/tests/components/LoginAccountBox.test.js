@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignInBox } from '../../components/SignInBox';
+import { LoginAccountBox } from '../../components/LoginAccountBox';
 
 test('should render SignInBox correctly', () => {
-    const wrapper = shallow(<SignInBox startLoginOnGoogle={() => { }}/>);
+    const wrapper = shallow(<LoginAccountBox startLoginOnGoogle={() => { }}/>);
     expect(wrapper).toMatchSnapshot();
 });
 
 test('should call startLoginOnGoogle on button click', () => {
     const startLoginOnGoogle = jest.fn();
-    const wrapper = shallow(<SignInBox startLoginOnGoogle={startLoginOnGoogle}/>);
+    const wrapper = shallow(<LoginAccountBox startLoginOnGoogle={startLoginOnGoogle}/>);
     wrapper.find('.login__google').simulate('click');
     expect(startLoginOnGoogle).toHaveBeenCalled();
 });
@@ -17,7 +17,7 @@ test('should call startLoginOnGoogle on button click', () => {
 
 test('should set email on input change', () => {
     const value = 'example@gmail.com';
-    const wrapper = shallow(<SignInBox />);
+    const wrapper = shallow(<LoginAccountBox />);
     wrapper.find('input').at(0).simulate('change', {
       target: { value }
     });
@@ -27,7 +27,7 @@ test('should set email on input change', () => {
 
 test('should set password on input change', () => {
     const value = '12345';
-    const wrapper = shallow(<SignInBox />);
+    const wrapper = shallow(<LoginAccountBox />);
     wrapper.find('input').at(1).simulate('change', {
       target: { value }
     });
@@ -40,7 +40,7 @@ test('should call startLoginOnEmail on submit form if email and password valid',
     const password = '123456';
     const email = 'example@gmail.com';
 
-    const wrapper = shallow(<SignInBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
+    const wrapper = shallow(<LoginAccountBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
     wrapper.find('form').simulate('submit', {
         preventDefault: () => { }
     });
@@ -53,7 +53,7 @@ test('should not call startLoginOnEmail on submit form if password not valid', (
     const password = '1234';
     const email = 'example@gmail.com';
 
-    const wrapper = shallow(<SignInBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
+    const wrapper = shallow(<LoginAccountBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
     wrapper.find('form').simulate('submit', {
         preventDefault: () => { }
     });
@@ -66,7 +66,7 @@ test('should not call startLoginOnEmail on submit form if email not valid', () =
     const password = '123456';
     const email = 'examplegmail.com';
 
-    const wrapper = shallow(<SignInBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
+    const wrapper = shallow(<LoginAccountBox startLoginOnEmail={startLoginOnEmail} password={password} email={email}/>);
     wrapper.find('form').simulate('submit', {
         preventDefault: () => { }
     });
