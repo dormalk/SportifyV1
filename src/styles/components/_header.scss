@@ -1,11 +1,12 @@
 .header{
-    background-color: orange; 
+    border-bottom: 3px solid $lite-grey;
     width: 100vw;
-    height: 10vh;
+    height: 7vh;
     margin: 0px;
     padding: $s-size 0;
 
     button {
+        color:$dark-grey;
         margin: 0;
         padding: 0;
     }
@@ -14,7 +15,7 @@
 .header__title{
     margin: 0;
     padding: 0;
-    color: white;
+    color:orange;
     font-size: 3rem;
     direction: ltr;
 }
