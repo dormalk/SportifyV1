@@ -2,6 +2,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {isPartOfHobbie,isHobbie,fields} from '../selectors/HobbiesSuggestion'; 
+
 
 const YourSex = ({hendelSexChange}) => (
     <div>
@@ -42,11 +44,12 @@ const YourAge = ({hendelAgeChange}) => (
     </div>
 );
 
-const YourHobbies = ({Hobbies,onHobbieEntered,onHobbieRemoved}) => (
+const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie}) => (
     <div>
         <h2>מה התחביבים שלך?</h2>
-        <input type="text" onKeyPress={onHobbieEntered.bind(this)}/>
+        <input type="text" value={currHobbie} onChange={onHobbieChanged.bind(this)} onKeyPress={onHobbieEntered.bind(this)}/>
         {Hobbies.map((hobbie,i) => (<div key={i}>{hobbie}<button onClick={onHobbieRemoved.bind(this,hobbie)}>x</button></div>))}
+        {currHobbie!='' && suggestHobbie(currHobbie).map((val,i) => (<div key={i} onClick={onHobbieChangedFromSuggest.bind(this,val)}>{val}</div>))}
     </div>
 )
 
@@ -54,36 +57,73 @@ export class LetMeKnowYouMorePage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name: this.props.name || '',
-            sex: '',
-            age:'',
-            hobbies: []
+            detail: {
+                name: this.props.name || '',
+                sex: '',
+                age:'',
+                hobbies: []    
+            },
+            autocompleat:''
         }
+        this.isStateHobbie = this.isStateHobbie.bind(this);
     }
 
     hendelSexChange = (e) => {
         const sex = e.target.value;
-        this.setState({sex});
+        this.setState({detail:{sex}});
     }
 
     hendelAgeChange = (e) => {
         const age = e.target.value;
-        this.setState({age});
+        this.setState({detail:{age}});
+    }
+
+    isStateHobbie = (value) => {
+        var _isHobbie = true;
+        const _fields = this.state.detail.hobbies;
+        for(var i=0;i<_fields.length;i++)
+            if(_fields[i] === value){
+                _isHobbie = false;
+                break;
+            } 
+        return _isHobbie;    
     }
 
     onHobbieEntered = (e) => {
         const hobbie = e.target.value;
         if(e.key === 'Enter'){
-            e.target.value = '';
-            const hobbies = this.state.hobbies;
-            hobbies.push(hobbie);    
-            this.setState({hobbies})
+            if(isHobbie(hobbie) && this.isStateHobbie(hobbie)){
+                const autocompleat = '';
+                const hobbies = this.state.detail.hobbies;
+                hobbies.push(hobbie);    
+                this.setState({detail:{hobbies}});
+                this.setState({autocompleat})    
+            }
         }
     }
 
     onHobbieRemoved = (hobbie) => {
-        var hobbies = this.state.hobbies.filter((h) => {return h !== hobbie;});
-        this.setState({hobbies});
+        var hobbies = this.state.detail.hobbies.filter((h) => {return h !== hobbie;});
+        this.setState({detail:{hobbies}});
+    }
+
+    onHobbieChanged = (e) => {
+        const autocompleat = e.target.value;
+        if(isPartOfHobbie(autocompleat))
+            this.setState({autocompleat});
+    }
+
+    suggestHobbie = (value) => {
+        return fields.filter((v) => {return v.startsWith(value) && this.isStateHobbie(v)});
+    }
+
+    onHobbieChangedFromSuggest = (value) => {
+        const hobbie = value;
+        const hobbies = this.state.detail.hobbies;
+        hobbies.push(hobbie);
+        const autocompleat = '';
+        this.setState({detail:{hobbies}});
+        this.setState({autocompleat});
     }
 
     render(){
@@ -103,10 +143,14 @@ export class LetMeKnowYouMorePage extends React.Component{
                         />}
                     </div>
                     {this.state.sex && <YourAge hendelAgeChange={this.hendelAgeChange}/>}
-                    {this.state.age && <YourHobbies 
-                                            Hobbies={this.state.hobbies} 
+                    {<YourHobbies 
+                                            Hobbies={this.state.detail.hobbies} 
                                             onHobbieEntered={this.onHobbieEntered}
-                                            onHobbieRemoved={this.onHobbieRemoved}/>}
+                                            onHobbieRemoved={this.onHobbieRemoved}
+                                            onHobbieChanged={this.onHobbieChanged}
+                                            currHobbie={this.state.autocompleat}
+                                            onHobbieChangedFromSuggest={this.onHobbieChangedFromSuggest}
+                                            suggestHobbie={this.suggestHobbie}/>}
                     </ReactCSSTransitionGroup>
                 </div>
             </div>
