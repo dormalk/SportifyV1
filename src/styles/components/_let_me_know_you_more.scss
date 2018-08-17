@@ -1,3 +1,6 @@
+h2{
+    margin:$s-size 0px;
+}
 .grey_border_box_display{
     border: 1px solid $lite-grey;
     padding: $m-size;
@@ -52,39 +55,111 @@
 
 
 .your_gender{
+    .your_gender___option{
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        display: flex;
+        flex-direction: row;
+        font-size: $font-size-large;
+
+        .your_gender___label{
+            position: relative;
+            top:-4px;
+            margin: auto $s-size;
+            margin-bottom: 10px;
+        }
+    }
+
     input[type=radio]{
         display:none;
     }
+
     input[type=radio] + .radiomark{
+        cursor: pointer;
         width: 15px;
         height: 15px;
         background: $lite-grey;
         border-radius: 50%;
-        display: inline-block;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
-    input[type=radio] .radiomark_cheked{
+
+    input[type=radio] + .radiomark .radiomark_checked{
         display: none;
-        width: 10px;
-        height: 10px;
-        background: white;
-        border-radius: 50%;
-        display: inline-block;
     }
     input[type=radio]:hover + .radiomark{
         background: darken($lite-grey, 5);
     }
+
     input[type=radio]:checked + .radiomark{
         background: $orange;
     }
 
-    input[type=radio]:checked .radiomark_cheked{
-        display: block;
+    input[type=radio]:checked + .radiomark .radiomark_checked{
+        display:inline-block;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        margin: auto;
     }
-   
 
 }
 
 
+.your_age{
+    input{
+        border-radius: 3px; 
+        border: 1px solid $lite-grey;
+        padding: 0.5rem 0;
+        padding-right: $m-size; 
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        cursor: pointer;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        width: 14px;
+        height: 14px;
+        position: relative;
+        right: 4px;
+        border-radius: 3px;
+        padding: 6px 4px;
+        margin-left:2px; 
+    }      
+}
+
+.your__hobbies{
+    margin-top: 40px;
+    margin-bottom: 100px;
+
+    .suggestion__list{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 0px;
+        .suggestion{
+            cursor: pointer;
+            display: inline-block;
+            border: 1px solid $lite-grey;
+            border-top:0px;
+            width: 200px;
+            padding: 0.5rem $m-size;
+        }
+        .suggestion:first-child{
+            border-bottom: 1px solid $lite-grey;
+            border-top: 1px solid $lite-grey;
+        }
+        .suggestion:last-child{
+            border-radius: 0 0 3px 3px;
+        }
+    
+    }
+}
 
 
 .exm-enter {

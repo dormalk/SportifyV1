@@ -20,35 +20,39 @@ export const YourGender = ({hendelGenderChange}) => {
     return(
         <div className="your_gender">
             <h2>מהו מינך?</h2>
-            {genders.map((gender,i) => (
-                <label key={i}>
-                    <input 
-                        key={i}
-                        onChange={hendelGenderChange}
-                        type='radio'
-                        name='gender'
-                        value={gender}/>
-                        <span className="radiomark"><span className="radiomark_checked"></span></span>
-                        {gender}
-                </label>
-            ))}
+            <div className="your_gender___option">
+                {genders.map((gender,i) => (
+                    <label key={i}>
+                        <input 
+                            key={i}
+                            onChange={hendelGenderChange}
+                            type='radio'
+                            name='gender'
+                            value={gender}/>
+                            <span className="radiomark"><span className="radiomark_checked"></span></span>
+                            <span className="your_gender___label">{gender}</span>
+                    </label>
+                ))}
+            </div>
     </div>
     )
 }
 
 export const YourAge = ({hendelAgeChange}) => (
-    <div>
+    <div className="your_age">
         <h2>גיל</h2>
         <input type="number" placeholder="18" min="16" max="99" onChange={hendelAgeChange}/>
     </div>
 );
 
 export const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie}) => (
-    <div>
+    <div className="your__hobbies">
         <h2>מה התחביבים שלך?</h2>
         <input type="text" value={currHobbie} onChange={onHobbieChanged.bind(this)} onKeyPress={onHobbieEntered.bind(this)}/>
         {Hobbies.map((hobbie,i) => (<div key={i}>{hobbie}<button onClick={onHobbieRemoved.bind(this,hobbie)}>x</button></div>))}
-        {currHobbie!='' && suggestHobbie(currHobbie).map((val,i) => (<div key={i} onClick={onHobbieChangedFromSuggest.bind(this,val)}>{val}</div>))}
+        <div className="suggestion__list">
+            {currHobbie!='' && suggestHobbie(currHobbie).map((val,i) => (<div className="suggestion" key={i} onClick={onHobbieChangedFromSuggest.bind(this,val)}>{val}</div>))}
+        </div>
     </div>
 )
 
