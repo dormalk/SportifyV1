@@ -4,66 +4,70 @@ exports[`should render SignInBox correctly 1`] = `
 <div
   className="content-container"
 >
-  <form
-    className="signup-form"
-    onSubmit={[Function]}
+  <div
+    className="signup-box"
   >
-    <h2>
-      יצירת משתמש חדש
-    </h2>
-    <label>
-      שם פרטי
-      <input
-        onChange={[Function]}
-        required={true}
-        type="text"
-      />
-    </label>
-    <label>
-      שם משפחה
-      <input
-        onChange={[Function]}
-        required={true}
-        type="text"
-      />
-    </label>
-    <label>
-      אימייל
-      <input
-        onChange={[Function]}
-        required={true}
-        type="text"
-      />
-    </label>
-    <label>
-      סיסמא
-      <input
-        onChange={[Function]}
-        required={true}
-        type="password"
-      />
-    </label>
-    <label>
-      אימות סיסמא
-      <input
-        onBlur={[Function]}
-        onChange={[Function]}
-        required={true}
-        type="password"
-      />
-    </label>
-    <lable>
-      תמונות פרופיל
-      <input
-        onChange={[Function]}
-        type="file"
-      />
-    </lable>
-    <button
-      className="signup__box"
+    <form
+      className="signup-form"
+      onSubmit={[Function]}
     >
-      צור חשבון
-    </button>
-  </form>
+      <h2>
+        יצירת משתמש חדש
+      </h2>
+      <label>
+        שם פרטי
+        <input
+          onChange={[Function]}
+          required={true}
+          type="text"
+        />
+      </label>
+      <label>
+        שם משפחה
+        <input
+          onChange={[Function]}
+          required={true}
+          type="text"
+        />
+      </label>
+      <label>
+        אימייל
+        <input
+          onChange={[Function]}
+          required={true}
+          type="text"
+        />
+      </label>
+      <label>
+        סיסמא
+        <input
+          onChange={[Function]}
+          required={true}
+          type="password"
+        />
+      </label>
+      <label>
+        אימות סיסמא
+        <input
+          onBlur={[Function]}
+          onChange={[Function]}
+          required={true}
+          type="password"
+        />
+      </label>
+      <label>
+        תמונת פרופיל
+        <input
+          onChange={[Function]}
+          type="file"
+        />
+      </label>
+      <button
+        className="signup__box"
+      >
+        צור חשבון
+      </button>
+    </form>
+  </div>
 </div>
 `;

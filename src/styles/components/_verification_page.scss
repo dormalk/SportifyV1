@@ -33,14 +33,3 @@
     }
 }
 
-
-.exm-enter {
-    overflow: hidden;
-    height: 0;
-  }
-  
-  .exm-enter.exm-enter-active {
-    overflow: hidden;
-    height: 250px;
-    transition: height .5s;
-  }

@@ -7,16 +7,23 @@ exports[`should render Header correctly 1`] = `
   <div
     className="content-container"
   >
-    <h1
-      className="header__title"
+    <div
+      className="justify-container"
     >
-      Sportify
-    </h1>
-    <button
-      onClick={[Function]}
-    >
-      Logout
-    </button>
+      <h1
+        className="header__title"
+      >
+        Sportify
+      </h1>
+      <input
+        type="text"
+      />
+      <button
+        onClick={[Function]}
+      >
+        התנתק
+      </button>
+    </div>
   </div>
 </div>
 `;

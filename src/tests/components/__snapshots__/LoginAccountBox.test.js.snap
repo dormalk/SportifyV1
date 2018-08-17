@@ -48,7 +48,6 @@ exports[`should render SignInBox correctly 1`] = `
       </div>
       <button
         className="login__google"
-        onClick={[Function]}
         type="button"
       >
         התחברות עם גוגל

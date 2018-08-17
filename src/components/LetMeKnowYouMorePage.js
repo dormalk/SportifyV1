@@ -3,73 +3,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {isPartOfHobbie,isHobbie,fields} from '../selectors/HobbiesSuggestion'; 
+import EditabelInput from './EditabelInput';
 
 
-class EditabelInput extends React.Component{
-    constructor(props){
-        super();
-        this.state = {
-            disable: true
-        }
-    }
-
-    onEditClick = () => {
-        const disable = !this.state.disable;
-        this.setState({disable});
-    }
-
-    render(){
-        return(
-            <div>
-                <label>{this.props.label}
-                    <input type="text" value={this.props.val} onChange={this.props.onChangeValue} disabled={this.state.disable}/>
-                    {this.state.disable? (
-                        <span onClick={this.onEditClick}>ערוך/י</span>
-                    ):(
-                        <span onClick={this.onEditClick}>סיימ/י עריכה</span>           
-                    )}
-                </label>
-            </div>
-        )        
-    }
-}
-
-
-const CheckDetail = ({fname,lname,onChangeFname,onChangeLname}) => (
-    <div>
+export const CheckDetail = ({fname,lname,onChangeFname,onChangeLname,onContinueButton}) => (
+    <div className="check_detail">
         <h2>האם הפרטים נכונים?</h2>
         <EditabelInput val={fname} onChangeValue={onChangeFname} label={"שם פרטי"}/>
         <EditabelInput val={lname} onChangeValue={onChangeLname} label={"שם משפחה"}/>
+        <button className="confirm_detail" onClick={onContinueButton}>אישור</button>
     </div>
 )
 
-const YourSex = ({hendelSexChange}) => {
+export const YourGender = ({hendelGenderChange}) => {
     const genders = ['זכר','נקבה','לא מעוניין למסור']
     return(
-        <div>
-        <h2>מהו מינך?</h2>
-        {genders.map((gender,i) => (
-            <label key={i}> {gender}
-            <input 
-                key={i}
-                onChange={hendelSexChange}
-                type='radio'
-                name='sex'
-                value={gender}/>
-            </label>
-        ))}
+        <div className="your_gender">
+            <h2>מהו מינך?</h2>
+            {genders.map((gender,i) => (
+                <label key={i}>
+                    <input 
+                        key={i}
+                        onChange={hendelGenderChange}
+                        type='radio'
+                        name='gender'
+                        value={gender}/>
+                        <span className="radiomark"><span className="radiomark_checked"></span></span>
+                        {gender}
+                </label>
+            ))}
     </div>
     )
 }
 
-const YourAge = ({hendelAgeChange}) => (
+export const YourAge = ({hendelAgeChange}) => (
     <div>
         <h2>גיל</h2>
         <input type="number" placeholder="18" min="16" max="99" onChange={hendelAgeChange}/>
     </div>
 );
 
-const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie}) => (
+export const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie}) => (
     <div>
         <h2>מה התחביבים שלך?</h2>
         <input type="text" value={currHobbie} onChange={onHobbieChanged.bind(this)} onKeyPress={onHobbieEntered.bind(this)}/>
@@ -85,13 +59,13 @@ export class LetMeKnowYouMorePage extends React.Component{
             user: {
                 ...this.props.user,
                 detail: {
-                    sex: '',
+                    gender: '',
                     age:'',
                     hobbies: []    
                 }
             },
             autocompleat:'',
-            flow: 1
+            flow: 1,
         }
         
         this.isStateHobbie = this.isStateHobbie.bind(this);
@@ -123,13 +97,13 @@ export class LetMeKnowYouMorePage extends React.Component{
     };
 
 
-    hendelSexChange = (e) => {
-        const sex = e.target.value;
+    hendelGenderChange = (e) => {
+        const gender = e.target.value;
         const user = {
             ...this.state.user,
             detail: {
                ...this.state.user.detail,
-               sex 
+               gender 
             }
         }
         this.setState({user});
@@ -225,7 +199,7 @@ export class LetMeKnowYouMorePage extends React.Component{
         return this.state.user &&
         (
             <div className="content-container">
-                <div>
+                <div className="let_me_know_you_more">
                     {this.state.user.fname && <h1>היי  {this.state.user.fname}, אני רוצה להכיר אותך יותר!</h1>}
                     <ReactCSSTransitionGroup
                         transitionName="exm"
@@ -240,20 +214,31 @@ export class LetMeKnowYouMorePage extends React.Component{
                                     fname={this.state.user.fname} 
                                     lname={this.state.user.lname}
                                     onChangeFname={this.onChangeFname}
-                                    onChangeLname={this.onChangeLname}/>
-                                <button onClick={this.onContinueButton}>אישור</button>
+                                    onChangeLname={this.onChangeLname}
+                                    onContinueButton={this.onContinueButton}/>
                             </div>
                         }
-                        {this.state.flow === 2 && <YourSex hendelSexChange={this.hendelSexChange}/>}
-                        {this.state.user.detail.sex && <YourAge hendelAgeChange={this.hendelAgeChange}/>}
-                        {this.state.user.detail.age && <YourHobbies 
-                                                Hobbies={this.state.user.detail.hobbies} 
-                                                onHobbieEntered={this.onHobbieEntered}
-                                                onHobbieRemoved={this.onHobbieRemoved}
-                                                onHobbieChanged={this.onHobbieChanged}
-                                                currHobbie={this.state.autocompleat}
-                                                onHobbieChangedFromSuggest={this.onHobbieChangedFromSuggest}
-                                                suggestHobbie={this.suggestHobbie}/>}
+                        {this.state.flow === 2 && <div className="grey_border_box_display">
+                            <ReactCSSTransitionGroup
+                            transitionName="exm"
+                            transitionAppear={false}
+                            transitionEnterTimeout={500}
+                            transitionEnter={true}
+                            transitionLeave={false}>
+                                <YourGender hendelGenderChange={this.hendelGenderChange}/>
+                                {this.state.user.detail.gender && <YourAge hendelAgeChange={this.hendelAgeChange}/>}
+                                {this.state.user.detail.age && <YourHobbies 
+                                                        Hobbies={this.state.user.detail.hobbies} 
+                                                        onHobbieEntered={this.onHobbieEntered}
+                                                        onHobbieRemoved={this.onHobbieRemoved}
+                                                        onHobbieChanged={this.onHobbieChanged}
+                                                        currHobbie={this.state.autocompleat}
+                                                        onHobbieChangedFromSuggest={this.onHobbieChangedFromSuggest}
+                                                        suggestHobbie={this.suggestHobbie}/>}
+                                {this.state.user.detail.hobbies.length > 0 &&
+                                <button>זהו סיימתי</button>}
+                            </ReactCSSTransitionGroup>
+                        </div>}
                     </ReactCSSTransitionGroup>
                 </div>
             </div>

@@ -3,7 +3,12 @@ export const fields = [    'כדורגל',
                     'טניס',
                     'כדורעף',
                     'ריצות קצרות',
-                    'ריצות ארוכות'];
+                    'ריצות ארוכות',
+                    'כדוררשת',
+                    'TRX',
+                    'אימוני כוח',
+                    'סקווש'
+                ];
 
 export const isPartOfHobbie = (value) => {
     var isPart = false;

@@ -8,10 +8,10 @@ test('should render SignInBox correctly', () => {
 });
 
 test('should call startLoginOnGoogle on button click', () => {
-    const startLoginOnGoogle = jest.fn();
-    const wrapper = shallow(<LoginAccountBox startLoginOnGoogle={startLoginOnGoogle}/>);
+    const startCreateAccountOnGoogle = jest.fn();
+    const wrapper = shallow(<LoginAccountBox startCreateAccountOnGoogle={startCreateAccountOnGoogle}/>);
     wrapper.find('.login__google').simulate('click');
-    expect(startLoginOnGoogle).toHaveBeenCalled();
+    expect(startCreateAccountOnGoogle).toHaveBeenCalled();
 });
 
 

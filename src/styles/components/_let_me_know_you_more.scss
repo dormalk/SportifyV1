@@ -1,0 +1,99 @@
+.grey_border_box_display{
+    border: 1px solid $lite-grey;
+    padding: $m-size;
+}
+
+.let_me_know_you_more{
+    margin: $m-size $xl-size;
+    font-size: $font-size-medium;
+}
+
+.check_detail{
+    @extend .grey_border_box_display;
+    label{
+        display: block;
+        margin: 5px auto;
+    }
+    .input_label{
+        display: inline-block;
+        width:80px;
+    }
+    input{
+        text-align: center;
+        border-radius: 3px;
+        border: 2px solid $dark-red;
+        width: 100px;
+        margin: auto $s-size;
+        font-size: $font-size-medium;
+    }
+    input:disabled{
+        background: white;
+        border:0px;        
+    }
+
+    .start__edit_input{
+        cursor: pointer; 
+        color:$orange;
+    }
+
+    .end__edit_input{
+        cursor: pointer; 
+        color:$dark-grey;        
+    }
+
+    .confirm_detail{
+        @extend .button__blue;
+        padding: 0.5rem $m-size;
+        margin: $m-size $xl-size;
+    }
+}
+
+
+
+
+.your_gender{
+    input[type=radio]{
+        display:none;
+    }
+    input[type=radio] + .radiomark{
+        width: 15px;
+        height: 15px;
+        background: $lite-grey;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    input[type=radio] .radiomark_cheked{
+        display: none;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    input[type=radio]:hover + .radiomark{
+        background: darken($lite-grey, 5);
+    }
+    input[type=radio]:checked + .radiomark{
+        background: $orange;
+    }
+
+    input[type=radio]:checked .radiomark_cheked{
+        display: block;
+    }
+   
+
+}
+
+
+
+
+.exm-enter {
+    overflow: hidden;
+    height: 0;
+}
+  
+.exm-enter.exm-enter-active {
+    overflow: hidden;
+    height: 90px;
+    transition: height .5s;
+}

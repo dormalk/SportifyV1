@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startUploadImage } from '../actions/storage';
 import { startCreateNewUser } from '../actions/user';
+import ErrorMassage from './ErrorMassage';
 
 
 export class CreateAccountForm extends React.Component {
@@ -93,56 +94,59 @@ export class CreateAccountForm extends React.Component {
 
     render(){
         return (
-            <div className="content-container">
-                <div className="signup-box">
-                    <form 
-                        onSubmit={this.onSubmit}
-                        className="signup-form"
-                    >
-                        <h2>יצירת משתמש חדש</h2>
-                        {this.state.error && <p className="form__error">{this.state.error}</p>}
-                        <label>שם פרטי
-                            <input 
-                                type="text"
-                                onChange={this.onFnameChange}
-                                required
-                            />
-                        </label>
-                        <label>שם משפחה
-                            <input 
-                                type="text"
-                                onChange={this.onLnameChange}
-                                required
-                            />
-                        </label>
-                        <label>אימייל
-                            <input 
-                                type="text"
-                                onChange={this.onEmailChange}
-                                required
-                            />
-                        </label>
-                        <label>סיסמא
-                            <input 
-                                type="password"
-                                onChange={this.onPasswordChange}
-                                required
-                            />
-                        </label>
-                        <label>אימות סיסמא
-                            <input 
-                                type="password"
-                                onChange={this.onConfirmPasswordChange}
-                                onBlur={this.checkCompatibilityPasswords}
-                                required
-                            />
-                        </label>
-                        <label>תמונת פרופיל
-                            <input type="file" onChange={this.onProfileChange}/>
-                        </label>
-                        {this.state.profile && <img src={this.state.profile}/>}
-                        <button className="signup__box">צור חשבון</button>
-                    </form>
+            <div>
+                {this.state.error && <ErrorMassage/>}
+                <div className="content-container">
+                    <div className="signup-box">
+                        <form 
+                            onSubmit={this.onSubmit}
+                            className="signup-form"
+                        >
+                            <h2>יצירת משתמש חדש</h2>
+                            {this.state.error && <p className="form__error">{this.state.error}</p>}
+                            <label>שם פרטי
+                                <input 
+                                    type="text"
+                                    onChange={this.onFnameChange}
+                                    required
+                                />
+                            </label>
+                            <label>שם משפחה
+                                <input 
+                                    type="text"
+                                    onChange={this.onLnameChange}
+                                    required
+                                />
+                            </label>
+                            <label>אימייל
+                                <input 
+                                    type="text"
+                                    onChange={this.onEmailChange}
+                                    required
+                                />
+                            </label>
+                            <label>סיסמא
+                                <input 
+                                    type="password"
+                                    onChange={this.onPasswordChange}
+                                    required
+                                />
+                            </label>
+                            <label>אימות סיסמא
+                                <input 
+                                    type="password"
+                                    onChange={this.onConfirmPasswordChange}
+                                    onBlur={this.checkCompatibilityPasswords}
+                                    required
+                                />
+                            </label>
+                            <label>תמונת פרופיל
+                                <input type="file" onChange={this.onProfileChange}/>
+                            </label>
+                            {this.state.profile && <img src={this.state.profile}/>}
+                            <button className="signup__box">צור חשבון</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         );

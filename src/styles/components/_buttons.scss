@@ -2,12 +2,9 @@
 button{
     border: 0;
     background: none;
-    padding: $s-size $m-size;
-    color:white;
     font-weight: bold;
     border-radius: 2px;
     font-size: $font-size-large;
-
 }
 
 .login_email{
@@ -56,4 +53,18 @@ button{
 
 .button__upload{
     background: black;
+}
+
+.button__blue {
+    @extend button;
+    background-color: $blue; 
+    border-bottom: 3px solid $dark-blue; 
+    margin: auto auto;
+    color:white;
+}
+
+.button__blue:active{
+    @extend button;
+    background-color: darken($blue, 3); 
+    border-bottom: 2px solid $dark-blue; 
 }

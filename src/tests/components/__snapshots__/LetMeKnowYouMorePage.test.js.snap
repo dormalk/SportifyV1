@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CheckDetail correctly 1`] = `
+<div>
+  <h2>
+    האם הפרטים נכונים?
+  </h2>
+  <EditabelInput
+    label="שם פרטי"
+  />
+  <EditabelInput
+    label="שם משפחה"
+  />
+</div>
+`;
+
+exports[`should render LetMeKnowYouMore correctly 1`] = `
+<div
+  className="content-container"
+>
+  <div>
+    <CSSTransitionGroup
+      transitionAppear={false}
+      transitionEnter={true}
+      transitionEnterTimeout={500}
+      transitionLeave={false}
+      transitionName="exm"
+    >
+      <div>
+        <CheckDetail
+          onChangeFname={[Function]}
+          onChangeLname={[Function]}
+        />
+        <button
+          onClick={[Function]}
+        >
+          אישור
+        </button>
+      </div>
+    </CSSTransitionGroup>
+  </div>
+</div>
+`;
+
+exports[`should render YourAge correctly 1`] = `
+<div>
+  <h2>
+    גיל
+  </h2>
+  <input
+    max="99"
+    min="16"
+    placeholder="18"
+    type="number"
+  />
+</div>
+`;
+
+exports[`should render YourGender correctly 1`] = `
+<div>
+  <h2>
+    מהו מינך?
+  </h2>
+  <label>
+     
+    זכר
+    <input
+      name="gender"
+      type="radio"
+      value="זכר"
+    />
+  </label>
+  <label>
+     
+    נקבה
+    <input
+      name="gender"
+      type="radio"
+      value="נקבה"
+    />
+  </label>
+  <label>
+     
+    לא מעוניין למסור
+    <input
+      name="gender"
+      type="radio"
+      value="לא מעוניין למסור"
+    />
+  </label>
+</div>
+`;
+
+exports[`should render YourHobbies correctly 1`] = `
+<div>
+  <h2>
+    מה התחביבים שלך?
+  </h2>
+  <input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    type="text"
+    value={
+      Array [
+        "",
+      ]
+    }
+  />
+  <div>
+    כדוררשת
+    <button
+      onClick={[Function]}
+    >
+      x
+    </button>
+  </div>
+  <div>
+    כדורעף
+    <button
+      onClick={[Function]}
+    >
+      x
+    </button>
+  </div>
+  <div>
+    כדורסל
+    <button
+      onClick={[Function]}
+    >
+      x
+    </button>
+  </div>
+  <div>
+    כדורגל
+    <button
+      onClick={[Function]}
+    >
+      x
+    </button>
+  </div>
+</div>
+`;
