@@ -49,7 +49,9 @@ export const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,
     <div className="your__hobbies">
         <h2>מה התחביבים שלך?</h2>
         <input type="text" value={currHobbie} onChange={onHobbieChanged.bind(this)} onKeyPress={onHobbieEntered.bind(this)}/>
-        {Hobbies.map((hobbie,i) => (<div key={i}>{hobbie}<button onClick={onHobbieRemoved.bind(this,hobbie)}>x</button></div>))}
+        <div className="curr_hobbie__list">
+            {Hobbies.map((hobbie,i) => (<div className="curr_hobbie" key={i}>{hobbie}<button onClick={onHobbieRemoved.bind(this,hobbie)}>x</button></div>))}
+        </div>
         <div className="suggestion__list">
             {currHobbie!='' && suggestHobbie(currHobbie).map((val,i) => (<div className="suggestion" key={i} onClick={onHobbieChangedFromSuggest.bind(this,val)}>{val}</div>))}
         </div>
