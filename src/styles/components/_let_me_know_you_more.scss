@@ -3,7 +3,11 @@ h2{
 }
 .grey_border_box_display{
     border: 1px solid $lite-grey;
-    padding: $m-size;
+    padding: $m-size $xl-size;
+}
+
+.grey_border_box_display___inner{
+    padding-bottom: $m-size; 
 }
 
 .let_me_know_you_more{
@@ -55,6 +59,7 @@ h2{
 
 
 .your_gender{
+    @extend .grey_border_box_display___inner;
     .your_gender___option{
         display: flex;
         flex-direction: column;
@@ -111,38 +116,32 @@ h2{
 
 
 .your_age{
+    @extend .grey_border_box_display___inner;
     input{
         border-radius: 3px; 
         border: 1px solid $lite-grey;
         padding: 0.5rem 0;
         padding-right: $m-size; 
     }
-
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        /* display: none; <- Crashes Chrome on hover */
-        cursor: pointer;
-        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        width: 14px;
-        height: 14px;
-        position: relative;
-        right: 4px;
-        border-radius: 3px;
-        padding: 6px 4px;
-        margin-left:2px; 
-    }      
+    
 }
 
 .your__hobbies{
-    margin-top: 40px;
-    margin-bottom: 100px;
+    @extend .grey_border_box_display___inner;
     position:relative;
+    input{
+        display: block;
+        border-radius: 3px; 
+        border: 1px solid $lite-grey;
+        padding: 0.5rem 0;
+        padding-right: $m-size; 
+    }
     .suggestion__list{
         position: absolute;
         display: flex;
         flex-direction: column;
         border-bottom: 0px;
-        top:60px;
+        top:65px;
         z-index: 1000;
         .suggestion{
             cursor: pointer;
@@ -165,16 +164,12 @@ h2{
         }
     }
 
-    input{
-        display: block;
-    }
-
     .curr_hobbie__list{
         display: inline-flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: 15px;
-        width: 400px;
+        margin-top: 20px;
+        width: 410px;
 
         .curr_hobbie{
             border: 1px solid orange;
@@ -188,17 +183,39 @@ h2{
         button{
             color:orange;
         }
+
+        
     }
 }
 
 
+.your__moto{    
+    @extend .grey_border_box_display___inner;
+    input{
+        display: block;
+        border-radius: 3px; 
+        border: 1px solid $lite-grey;
+        padding: 0.5rem 0;
+        padding-right: $m-size; 
+    }
+}
+
+ .let_me_know_you_more___finish_button{
+    @extend .button__blue;
+    padding: 0.5rem $m-size;
+    margin: $m-size $xl-size;
+ }
+
+
 .exm-enter {
     overflow: hidden;
-    height: 0;
+    max-height: 0;
 }
   
 .exm-enter.exm-enter-active {
     overflow: hidden;
-    height: 90px;
-    transition: height .5s;
+    max-height: 500px;
+    transition: max-height 1.5s ease-out;
 }
+
+

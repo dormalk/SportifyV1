@@ -82,11 +82,11 @@ export class CreateAccountForm extends React.Component {
             this.setState({error:'נא בחר קובץ תמונה פחות מ 585,750 בית'});
         }
         else{
-            this.setState(() => ({error:''}));  
-            this.props.startUploadImage(picture).then((profile) => {
+                this.setState(() => ({error:''}));  
+                this.props.startUploadImage(picture).then((profile) => {
                 this.setState({error:''});
                 this.setState({profile});
-            }).catch((error) => {
+                }).catch((error) => {
                 this.setState({error:'לא ניתן לעלות קובץ תמונה ברגע זה'});
             });
         }

@@ -56,7 +56,7 @@ export const startEditUser = (updates) => {
 export const startCreateAccountOnGoogle = (email,password) => {
     return(dispatch) => {
         return dispatch(startLoginOnGoogle()).then((authUser) => {
-            return database.ref(`users/${authUser.uid}`).once('value').then((snapshot) => {
+            return database.ref(`users/${authUser.user.uid}`).once('value').then((snapshot) => {
                 if(snapshot.val()){
                     dispatch(setUser(snapshot.val()));
                 }

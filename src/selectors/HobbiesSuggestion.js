@@ -7,14 +7,23 @@ export const fields = [    'כדורגל',
                     'כדוררשת',
                     'TRX',
                     'אימוני כוח',
-                    'סקווש'
+                    'סקווש',
+                    'הליכות',
+                    'אגרוף תאילנדי',
+                    'קראטה',
+                    'MMA',
+                    'גודו',
+                    'שחייה',
+                    'קפיצה לרוחק',
+                    'טיפוס'
                 ];
 
 export const isPartOfHobbie = (value) => {
     var isPart = false;
-    for(var i=0;i<fields.length;i++)
-        if(isPart = fields[i].startsWith(value)) break;
-    return isPart;
+    for(var i=0;i<fields.length;i++){
+        if(isPart = fields[i].startsWith(value)) break;;
+    }
+    return isPart;   
 }
 
 export const isHobbie = (value) => {

@@ -7,6 +7,10 @@ button{
     font-size: $font-size-large;
 }
 
+button:focus{
+    outline: 0;
+}
+
 .login_email{
     @extend button;
     background-color: $green; 

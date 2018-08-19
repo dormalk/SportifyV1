@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow,mount } from 'enzyme';
 import { 
     LetMeKnowYouMorePage,
     YourHobbies,
@@ -18,10 +18,22 @@ test('should update fname/lname on form load correctly', () => {
         fname: 'Yosi',
         lname: 'Nimelman'
     }
+    const wrapper = mount(<LetMeKnowYouMorePage user={user}/>);
+    wrapper.find('input').at(0).simulate('change',{target:'dor'});
+    wrapper.find('button').at(0).simulate('click',{});
+
+});
+
+test('should update fname/lname onClick button of CheckDetail', () => {
+    const user = {
+        fname: 'Yosi',
+        lname: 'Nimelman'
+    }
     const wrapper = shallow(<LetMeKnowYouMorePage user={user}/>);
     expect(wrapper.state('user').fname).toBe(user.fname);
     expect(wrapper.state('user').lname).toBe(user.lname);
 });
+
 
 test('should render YourHobbies correctly', () => {
     const onHobbieEntered = jest.fn();
