@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {isPartOfHobbie,isHobbie,fields} from '../selectors/HobbiesSuggestion'; 
 import EditabelInput from './EditabelInput';
-import { startEditUser } from '../actions/user';
+import { startEditUser, } from '../actions/user';
 
 
 export const CheckDetail = ({fname,lname,onChangeFname,onChangeLname,onContinueButton}) => (
