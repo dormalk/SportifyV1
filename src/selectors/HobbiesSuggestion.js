@@ -1,4 +1,5 @@
-export const fields = [    'כדורגל',
+export const fields = [    
+                    'כדורגל',
                     'כדורסל',
                     'טניס',
                     'כדורעף',
@@ -21,7 +22,7 @@ export const fields = [    'כדורגל',
 export const isPartOfHobbie = (value) => {
     var isPart = false;
     for(var i=0;i<fields.length;i++){
-        if(isPart = fields[i].startsWith(value)) break;;
+        if(isPart = fields[i].startsWith(value)) break;
     }
     return isPart;   
 }

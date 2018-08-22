@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render CheckDetail correctly 1`] = `
-<div>
+<div
+  className="check_detail"
+>
   <h2>
     האם הפרטים נכונים?
   </h2>
@@ -11,6 +13,11 @@ exports[`should render CheckDetail correctly 1`] = `
   <EditabelInput
     label="שם משפחה"
   />
+  <button
+    className="confirm_detail"
+  >
+    אישור
+  </button>
 </div>
 `;
 
@@ -18,7 +25,9 @@ exports[`should render LetMeKnowYouMore correctly 1`] = `
 <div
   className="content-container"
 >
-  <div>
+  <div
+    className="let_me_know_you_more"
+  >
     <CSSTransitionGroup
       transitionAppear={false}
       transitionEnter={true}
@@ -30,12 +39,8 @@ exports[`should render LetMeKnowYouMore correctly 1`] = `
         <CheckDetail
           onChangeFname={[Function]}
           onChangeLname={[Function]}
+          onContinueButton={[Function]}
         />
-        <button
-          onClick={[Function]}
-        >
-          אישור
-        </button>
       </div>
     </CSSTransitionGroup>
   </div>
@@ -43,9 +48,11 @@ exports[`should render LetMeKnowYouMore correctly 1`] = `
 `;
 
 exports[`should render YourAge correctly 1`] = `
-<div>
+<div
+  className="your_age"
+>
   <h2>
-    גיל
+    גילך
   </h2>
   <input
     max="99"
@@ -57,44 +64,82 @@ exports[`should render YourAge correctly 1`] = `
 `;
 
 exports[`should render YourGender correctly 1`] = `
-<div>
+<div
+  className="your_gender"
+>
   <h2>
-    מהו מינך?
+    מינך
   </h2>
-  <label>
-     
-    זכר
-    <input
-      name="gender"
-      type="radio"
-      value="זכר"
-    />
-  </label>
-  <label>
-     
-    נקבה
-    <input
-      name="gender"
-      type="radio"
-      value="נקבה"
-    />
-  </label>
-  <label>
-     
-    לא מעוניין למסור
-    <input
-      name="gender"
-      type="radio"
-      value="לא מעוניין למסור"
-    />
-  </label>
+  <div
+    className="your_gender___option"
+  >
+    <label>
+      <input
+        name="gender"
+        type="radio"
+        value="זכר"
+      />
+      <span
+        className="radiomark"
+      >
+        <span
+          className="radiomark_checked"
+        />
+      </span>
+      <span
+        className="your_gender___label"
+      >
+        זכר
+      </span>
+    </label>
+    <label>
+      <input
+        name="gender"
+        type="radio"
+        value="נקבה"
+      />
+      <span
+        className="radiomark"
+      >
+        <span
+          className="radiomark_checked"
+        />
+      </span>
+      <span
+        className="your_gender___label"
+      >
+        נקבה
+      </span>
+    </label>
+    <label>
+      <input
+        name="gender"
+        type="radio"
+        value="לא מעוניין למסור"
+      />
+      <span
+        className="radiomark"
+      >
+        <span
+          className="radiomark_checked"
+        />
+      </span>
+      <span
+        className="your_gender___label"
+      >
+        לא מעוניין למסור
+      </span>
+    </label>
+  </div>
 </div>
 `;
 
 exports[`should render YourHobbies correctly 1`] = `
-<div>
+<div
+  className="your__hobbies"
+>
   <h2>
-    מה התחביבים שלך?
+    תאר/י את עיסוקי הספורט שלך
   </h2>
   <input
     onChange={[Function]}
@@ -106,37 +151,52 @@ exports[`should render YourHobbies correctly 1`] = `
       ]
     }
   />
-  <div>
-    כדוררשת
-    <button
-      onClick={[Function]}
+  <div
+    className="curr_hobbie__list"
+  >
+    <div
+      className="curr_hobbie"
     >
-      x
-    </button>
-  </div>
-  <div>
-    כדורעף
-    <button
-      onClick={[Function]}
+      כדוררשת
+      <button
+        onClick={[Function]}
+      >
+        x
+      </button>
+    </div>
+    <div
+      className="curr_hobbie"
     >
-      x
-    </button>
-  </div>
-  <div>
-    כדורסל
-    <button
-      onClick={[Function]}
+      כדורעף
+      <button
+        onClick={[Function]}
+      >
+        x
+      </button>
+    </div>
+    <div
+      className="curr_hobbie"
     >
-      x
-    </button>
-  </div>
-  <div>
-    כדורגל
-    <button
-      onClick={[Function]}
+      כדורסל
+      <button
+        onClick={[Function]}
+      >
+        x
+      </button>
+    </div>
+    <div
+      className="curr_hobbie"
     >
-      x
-    </button>
+      כדורגל
+      <button
+        onClick={[Function]}
+      >
+        x
+      </button>
+    </div>
   </div>
+  <div
+    className="suggestion__list"
+  />
 </div>
 `;

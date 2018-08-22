@@ -34,3 +34,17 @@ button:disabled {
 a{
   text-decoration: none;
 }
+
+.error{
+  position: fixed;
+  display: block;
+  top:0;
+  left:0;
+  width:100%;
+  background: $dark-red;
+  color: white;
+  font-weight: bold;
+  font-size: 20;  
+  padding: 0.5rem;
+
+}

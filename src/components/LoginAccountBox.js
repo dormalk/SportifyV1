@@ -45,8 +45,8 @@ export class LoginAccountBox extends React.Component{
         return (
             <div className="content-container">
                 <div className="login-box">
-                    <h1 className="login-box__title">התחברות לספורטיפיי</h1>
-                    {this.state.error && <p className="form__error">{this.state.error}</p>}
+                {this.state.error && <div className="error">{this.state.error}</div>}
+                <h1 className="login-box__title">התחברות לספורטיפיי</h1>
                     <form  className="login-form" onSubmit={this.onSubmit}>
                         <input 
                             type="text"
