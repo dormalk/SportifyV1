@@ -1,0 +1,188 @@
+
+
+.img_wrapper{
+    position: relative;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: $s-size auto;
+
+    img{
+        position: absolute;
+        top:0px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.profile_view__label{
+    display: inline-block;
+    font-weight: 200;
+    font-size: 12px;
+    margin: auto 0;
+    margin-left: $s-size;
+}
+
+.profile_view__label___block{
+    @extend .profile_view__label;
+    display: block;
+}
+
+.profile_view__your-age{
+    display: flex;
+    flex-direction: row;
+    margin: .5rem 0;
+
+    div{
+        display: inline-block;
+        font-weight: 200;
+        font-size: 12px;
+        margin: auto 0;    
+    }
+}
+
+.profile_view__your-hobbies{
+    position: relative;
+    margin: .5rem 0;
+    input{
+        margin: 0.5rem 0;
+        display: block;
+    }
+    .suggestion__list{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 0px;
+        z-index: 1000;
+        top:32px;        
+        .suggestion{
+            cursor: pointer;
+            display: inline-block;
+            border: 1px solid $lite-grey;
+            border-top:0px;
+            width: 183px;
+            padding: 0.5rem $m-size;
+            background: white;
+        }
+        .suggestion:first-child{
+            border-bottom: 1px solid $lite-grey;
+            border-top: 1px solid $lite-grey;
+        }
+        .suggestion:last-child{
+            border-radius: 0 0 3px 3px;
+        }
+        .suggestion:hover{
+            background: lighten($lite-grey,15);
+        }
+    }
+
+    .curr_hobbie__list{
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 150px;
+
+    }
+}
+
+.deshboard__button_edit{
+    position: absolute;
+    left:0px;
+    font-weight: 100;
+    font-size: 10px;
+}
+
+
+.profile_view___non-edit,.profile_view___edit{
+    position: relative;
+    display: inline-flex;
+    width: 200px;
+    border-left: 1px solid $lite-grey;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: $s-size;
+    
+    .hobbie{
+        display: inline-block;   
+        margin: 0.2rem 0.2rem;     
+    }
+
+
+    h1{
+        margin: 0px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        input{
+            width: 13rem;
+        }
+    }
+
+}
+
+
+.profile_view___edit{
+    .img_wrapper{
+        input[type=file]{
+            position: absolute;
+            top:0px;
+            right:-100px;
+            width:100vw;
+            height: 40px;
+            cursor: pointer;
+            outline:none;
+            opacity: 0;
+            z-index: 1000;
+        }
+        .costume___input_file{
+            overflow: hidden;
+            max-height: 0;
+        }
+    }
+
+    .img_wrapper:hover{
+        .costume___input_file{
+            overflow: hidden;
+            display: inline-block;
+            position: absolute;
+            right:0px;
+            width:100%;
+            height: 40px;
+            color: white;
+            font-size: 12px;
+            background: $dark-grey;
+            opacity: 0.8;
+            padding-top: $s-size;
+            text-align: center;
+            cursor: pointer;
+            z-index: 500;
+            max-height: 40px;
+            transition: max-height 0.3s ease-out;        
+        }  
+    }
+}
+
+.profile_view__your-moto{
+    .profile_view__label___block{
+        margin:0.3rem 0;
+    }
+}
+
+
+@media (max-width: $desktop-breakpoint){
+    .profile_view___non-edit,.profile_view___edit{
+        width:100%;
+        border: 0;
+        padding: $m-size $xl-size;
+        font-size: 1.5rem;
+        h1{
+            font-size: 2.3rem;
+        }
+    }
+
+    .profile_view__label,.profile_view__label___block{
+        font-size: 2rem;
+    }
+
+}

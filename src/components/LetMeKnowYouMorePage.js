@@ -16,11 +16,11 @@ export const CheckDetail = ({fname,lname,onChangeFname,onChangeLname,onContinueB
     </div>
 )
 
-export const YourGender = ({hendelGenderChange}) => {
+export const YourGender = ({mainClassName,labelText,hendelGenderChange}) => {
     const genders = ['זכר','נקבה','לא מעוניין למסור']
     return(
-        <div className="your_gender">
-            <h2>מינך</h2>
+        <div className={mainClassName}>
+            {labelText && <h2>מינך</h2>}
             <div className="your_gender___option">
                 {genders.map((gender,i) => (
                     <label key={i}>
@@ -39,16 +39,16 @@ export const YourGender = ({hendelGenderChange}) => {
     )
 }
 
-export const YourAge = ({hendelAgeChange}) => (
-    <div className="your_age">
-        <h2>גילך</h2>
-        <input type="number" placeholder="18" min="16" max="99" onChange={hendelAgeChange}/>
+export const YourAge = ({mainClassName,labelText,hendelAgeChange,innerValue}) => (
+    <div className={mainClassName}>
+        {labelText && <h2>{labelText}</h2>}
+        <input value={innerValue || ''} type="number" placeholder="18" min="16" max="99" onChange={hendelAgeChange}/>
     </div>
 );
 
-export const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie}) => (
-    <div className="your__hobbies">
-        <h2>תאר/י את עיסוקי הספורט שלך</h2>
+export const YourHobbies = ({labelText,currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,onHobbieChanged,onHobbieChangedFromSuggest,suggestHobbie,mainClassName}) => (
+    <div className={mainClassName}>
+        {labelText && <h2>{labelText}</h2>}
         <input type="text" value={currHobbie} onChange={onHobbieChanged.bind(this)} onKeyPress={onHobbieEntered.bind(this)}/>
         <div className="curr_hobbie__list">
             {Hobbies.map((hobbie,i) => (<div className="curr_hobbie" key={i}>{hobbie}<button onClick={onHobbieRemoved.bind(this,hobbie)}>x</button></div>))}
@@ -59,9 +59,9 @@ export const YourHobbies = ({currHobbie,Hobbies,onHobbieEntered,onHobbieRemoved,
     </div>
 )
 
-export const YourMoto = ({val,onChangeMoto}) => (
-    <div className="your__moto">
-        <h2>תאר/י את עצמך במשפט אחד</h2>
+export const YourMoto = ({mainClassName,labelText,val,onChangeMoto}) => (
+    <div className={mainClassName}>
+        {labelText && <h2>{labelText}</h2>}        
         <input type="text" value={val} onChange={onChangeMoto}/>
     </div>
 )
@@ -271,8 +271,17 @@ export class LetMeKnowYouMorePage extends React.Component{
                             transitionEnterTimeout={500}
                             transitionEnter={true}
                             transitionLeave={false}>
-                                <YourGender hendelGenderChange={this.hendelGenderChange}/>
-                                {this.state.user.detail.gender && <YourAge hendelAgeChange={this.hendelAgeChange}/>}
+                                <YourGender 
+                                    hendelGenderChange={this.hendelGenderChange}
+                                    mainClassName="your__gender"
+                                    labelText="מהו מינך?" 
+                                />
+                                {this.state.user.detail.gender && 
+                                    <YourAge 
+                                        hendelAgeChange={this.hendelAgeChange}
+                                        mainClassName="your__age"
+                                        labelText="מהו גילך?" 
+                                    />}
                                 {this.state.user.detail.age && <YourHobbies 
                                                         Hobbies={this.state.user.detail.hobbies} 
                                                         onHobbieEntered={this.onHobbieEntered}
@@ -280,10 +289,17 @@ export class LetMeKnowYouMorePage extends React.Component{
                                                         onHobbieChanged={this.onHobbieChanged}
                                                         currHobbie={this.state.autocompleat}
                                                         onHobbieChangedFromSuggest={this.onHobbieChangedFromSuggest}
-                                                        suggestHobbie={this.suggestHobbie}/>}
-                                {this.state.user.detail.hobbies.length > 0 && <YourMoto 
-                                                                                    val={this.state.user.detail.moto}
-                                                                                    onChangeMoto={this.onChangeMoto}/>}
+                                                        suggestHobbie={this.suggestHobbie}
+                                                        mainClassName="your__hobbies"
+                                                        labelText="תאר/י את עיסוקי הספורט שלך?" 
+                                                        />}
+                                {this.state.user.detail.hobbies.length > 0 && 
+                                    <YourMoto 
+                                        val={this.state.user.detail.moto}
+                                        onChangeMoto={this.onChangeMoto}
+                                        mainClassName="your__moto"
+                                        labelText="תאר/י את עצמך במשפט אחד"    
+                                    />}
                                 {this.state.user.detail.moto && <button className="let_me_know_you_more___finish_button" onClick={this.onSubbmitButton}>זהו סיימתי</button>}
                             </ReactCSSTransitionGroup>
                         </div>}

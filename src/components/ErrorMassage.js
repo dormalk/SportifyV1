@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default (props) => (
-    <div>
+    <div className="error">
     שגיאה התרחשה - {props.error}
     </div>
 ) 

@@ -80,22 +80,23 @@ export class CreateAccountForm extends React.Component {
         }
         else if(picture.size > 585750){
             this.setState({error:'נא בחר קובץ תמונה פחות מ 585,750 בית'});
+            console.log('Hello');
         }
         else{
                 this.setState(() => ({error:''}));  
                 this.props.startUploadImage(picture).then((profile) => {
-                this.setState({error:''});
-                this.setState({profile});
+                    this.setState({error:''});
+                    this.setState(() => ( { user: { ...this.state.user, profile } } ));
                 }).catch((error) => {
-                this.setState({error:'לא ניתן לעלות קובץ תמונה ברגע זה'});
-            });
+                    this.setState({error:'לא ניתן לעלות קובץ תמונה ברגע זה'});
+                });
         }
     }
 
     render(){
         return (
             <div>
-                {this.state.error && <ErrorMassage/>}
+                {this.state.error && <ErrorMassage error={this.state.error}/>}
                 <div className="content-container">
                     <div className="signup-box">
                         <form 

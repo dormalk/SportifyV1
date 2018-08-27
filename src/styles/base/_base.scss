@@ -5,11 +5,18 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   color: $dark-grey;
   font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+html, body, #app, #app>div,#app>div>div {
+  height: 100%;
 }
 
 button {
@@ -28,6 +35,12 @@ button:disabled {
   margin: 0 auto;
   padding: 0 $m-size;
   max-width: 90%;
+}
+
+@media (max-width: $desktop-breakpoint){
+  .content-container{
+      max-width: 96%;
+    }
 }
 
 

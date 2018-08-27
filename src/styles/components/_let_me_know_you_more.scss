@@ -58,7 +58,7 @@ h2{
 
 
 
-.your_gender{
+.your__gender{
     @extend .grey_border_box_display___inner;
     .your_gender___option{
         display: flex;
@@ -115,7 +115,7 @@ h2{
 }
 
 
-.your_age{
+.your__age{
     @extend .grey_border_box_display___inner;
     input{
         border-radius: 3px; 

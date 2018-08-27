@@ -1,0 +1,14 @@
+.main_screen{
+    display: inline-flex;
+    flex-direction: column;
+    height: 95%;
+    width: 100%;
+    .middle{
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;    
+        height: 100%;
+        width: 100%;
+    }
+}
+
