@@ -15,13 +15,16 @@ export default class AccountSearcher extends React.Component{
     onFilterChange = (e) => {
         const inputval = e.target.value;
         this.setState({inputval});
-        var users = fatchUserByName(inputval);
-        this.setState({users});
+        var users = [];
+        if(inputval){
+            users = fatchUserByName(inputval);
+        }
+        this.setState({users});    
     }
     render(){
         return(
-            <div>
-                <input value={this.state.inputval} onChange={this.onFilterChange}/>
+            <div className="account_searcher">
+                <input className="account_searcher___input" value={this.state.inputval} onChange={this.onFilterChange}/>
                 <UserList users={this.state.users}/>
             </div>
         )
