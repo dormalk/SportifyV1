@@ -11,3 +11,10 @@ export const fatchUserByName = (value) => {
     }); 
     return users;
 }
+
+
+export const fatchUserById = (uid) => {
+    return database.ref(`users/${uid}`).once('value').then((snapshot) => {
+        return snapshot.val();
+    });
+}

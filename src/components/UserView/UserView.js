@@ -1,15 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import UserProfileView from './UserProfileView';
+import { fatchUserById } from '../../selectors/UsersFiltering';
+import Footer from '../Footer';
+
 
 export default class UserView extends React.Component{
-    constructor(props){
+    constructor(props) {
         super(props);
-        console.log(this.props.match.params.id);
+        this.state = {
+            user: ''
+        }
+    }
+
+    componentDidMount = () => {
+        fatchUserById(this.props.match.params.id).then((user) => {
+            this.setState({user});
+        })
     }
 
     render(){
         return(
-            <div>
-                היייי
+            <div className="main_screen">
+                <div className="middle">
+                    {this.state.user && 
+                    <UserProfileView user={this.state.user}/>}
+                </div>
+                <Footer/>
             </div>
         )
     }
