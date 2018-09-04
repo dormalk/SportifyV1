@@ -6,8 +6,7 @@ import PublicRoute from './PublicRoute';
 import LoginAccountPage from '../components/LoginAccountPage';
 import DashboardPage from '../components/DashboardPage';
 import CreateAccountPage from '../components/CreateAccountPage';
-import VerificationPage from '../components/VerificationPage';
-
+import UserView from '../components/UserView/UserView';
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -17,6 +16,7 @@ const AppRouter = () => (
         <PublicRoute path="/" component={LoginAccountPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/signup" component={CreateAccountPage} />
+        <PrivateRoute path="/users/:id" component={UserView}/>
       </Switch>
     </div>
   </Router>

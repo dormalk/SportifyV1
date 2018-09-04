@@ -9,19 +9,19 @@
         width: 100%;
         outline: none;
     }
-
     .account_searcher___user-list{
         position: absolute;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        width: 100%;
         a{
             background: white;
             background-image: url('/images/person.png');
             background-repeat: no-repeat;
             background-position: right 10px center;
             color: black;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             border: 1px solid $lite-grey;
             margin-bottom: -1px;
             padding: 0.5rem $s-size;
@@ -42,31 +42,32 @@
         position: absolute;
         display: inline-block;
         z-index: 1000;
-        width: 50%;
+        width: 93%;
         height: 6vh;
         right: $m-size;
-        background: white;
-    }
 
-    .account_searcher___input{
-        height: 5.5vh;
-    }
+        .account_searcher___input{
+            height: 5.5vh;
+            display: inline-block;
+            width: 50vw;
+        }
+    
+        .account_searcher___input:focus{
+            width:100%;
+        }
 
-    .account_searcher___input:focus{
-        width: 183%;
-    }
-
-    .account_searcher___user-list{
-        position: absolute;
-        display: block;
-        flex-wrap: none;
-        width: 100vw;
-        height: 100vh;
-        top:7.5vh;
-        right: -15px;
-        background: white;
-        a{
-            font-size: 2.2rem;
+        .account_searcher___user-list{
+            position: absolute;
+            flex-wrap: none;
+            width: 100vw;
+            height: 100vh;
+            top:7.3vh;
+            right: -15px;
+            background: white;
+            a{
+                text-align:center;
+            }
         }
     }
 }
+

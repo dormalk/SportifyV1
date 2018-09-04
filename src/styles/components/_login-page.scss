@@ -43,7 +43,9 @@
     justify-content: space-between;
     margin-top:$xs-size;
     button{
+        @extend .button__green;
         width:100%;
+        padding: 0.5rem;
         font-size: $font-size-large;
     }
     button:first-child{
@@ -54,4 +56,12 @@
         margin-right: $xs-size/2;
         width:60%;
     }
+}
+
+
+.login__google{
+    @extend .button__red;
+    font-size: $font-size-large;
+    width:100%;
+    padding: 0.5rem;
 }

@@ -28,19 +28,6 @@ button:focus{
 }
 
 
-.login__google{
-    @extend button;
-    background-color: $red; 
-    border-bottom: 3px solid $dark-red; 
-    font-size: $font-size-large;
-}
-
-.login__google:active{
-    @extend button;
-    background-color: darken($red, 3); 
-    border-bottom: 2px solid $dark-red; 
-}
-
 .signup__box{
     @extend button;
     background-color: $blue; 
@@ -71,4 +58,34 @@ button:focus{
     @extend button;
     background-color: darken($blue, 3); 
     border-bottom: 2px solid $dark-blue; 
+}
+
+
+.button__green {
+    @extend button;
+    background-color: $green; 
+    border-bottom: 3px solid $dark-green; 
+    margin: auto auto;
+    color:white;
+}
+
+.button__green:active{
+    @extend button;
+    background-color: darken($green, 3); 
+    border-bottom: 2px solid $dark-green; 
+}
+
+
+.button__red {
+    @extend button;
+    background-color: $red; 
+    border-bottom: 3px solid $dark-red; 
+    margin: auto auto;
+    color:white;
+}
+
+.button__red:active{
+    @extend button;
+    background-color: darken($red, 3); 
+    border-bottom: 2px solid $dark-red; 
 }
