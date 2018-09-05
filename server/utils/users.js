@@ -9,18 +9,18 @@ class Users{
       return user;
     }
   
-    removeUser(uid){
-      var user = this.getUser(uid);
+    removeUser(socketId){
+      var user = this.getUser(socketId);
   
       if(user){
-        this.users = this.users.filter((user) => user.uid !== uid);
+        this.users = this.users.filter((user) => user.socketId !== socketId);
       }
   
       return user;
     }
   
-    getUser(uid){
-      return this.users.filter((user) => user.uid === uid)[0];
+    getUser(socketId){
+      return this.users.filter((user) => user.socketId === socketId)[0];
     }
   
     getUserList(){
