@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import validator from 'validator';
 import { Link } from 'react-router-dom';
-import { startCreateAccountOnGoogle } from '../actions/user';
-import { startLoginOnEmail } from '../actions/auth';
+import { startCreateAccountOnGoogle } from '../../actions/user';
+import { startLoginOnEmail } from '../../actions/auth';
 
 export class LoginAccountBox extends React.Component{
     constructor(props){

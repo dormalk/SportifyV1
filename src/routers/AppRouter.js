@@ -3,9 +3,9 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import LoginAccountPage from '../components/LoginAccountPage';
+import LoginAccountPage from '../components/LoginAccount/LoginAccountPage';
 import DashboardPage from '../components/DashboardPage';
-import CreateAccountPage from '../components/CreateAccountPage';
+import CreateAccountPage from '../components/CreateAccount/CreateAccountPage';
 import UserView from '../components/UserView/UserView';
 export const history = createHistory();
 

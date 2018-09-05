@@ -24,7 +24,7 @@ export default class UserView extends React.Component{
             <div className="main_screen">
                 <div className="middle">
                     {this.state.user && 
-                    <UserProfileView user={this.state.user}/>}
+                    <UserProfileView user={this.state.user} uid={this.props.match.params.id}/>}
                 </div>
                 <Footer/>
             </div>

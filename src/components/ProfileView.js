@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { YourHobbies,YourAge,YourMoto } from './LetMeKnowYouMorePage';
 import {isHobbie,fields} from '../selectors/HobbiesSuggestion'; 
-import { startEditUser, } from '../actions/user';
+import { startEditUser } from '../actions/user';
 import { startUploadImage } from '../actions/storage';
 
 export class ProfileView extends React.Component{

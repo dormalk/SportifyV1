@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startUploadImage } from '../actions/storage';
-import { startCreateNewUser } from '../actions/user';
-import ErrorMassage from './ErrorMassage';
+import { startUploadImage } from '../../actions/storage';
+import { startCreateNewUser } from '../../actions/user';
+import ErrorMassage from '../ErrorMassage';
 
 
 export class CreateAccountForm extends React.Component {
