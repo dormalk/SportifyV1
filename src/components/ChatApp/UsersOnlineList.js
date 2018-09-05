@@ -1,6 +1,7 @@
 import React from 'react';
+import { socketConnect } from 'socket.io-react';
 
-export default class UsersOnlineList extends React.Component{
+export class UsersOnlineList extends React.Component{
 
     constructor(props){
         super(props);
@@ -8,12 +9,11 @@ export default class UsersOnlineList extends React.Component{
             users:[]
         }
     }
-    onAddUser = (user) => {
-        console.log(user);
-    }
-
+    
     render(){
-        this.props.socket.on('addUser',user => this.onAddUser(user));
+        this.props.socket.on('updateOnlineList', (users) =>{
+            console.log(users);
+        })
         return(
             <div>
                 {this.state.users.map((user) => {
@@ -23,3 +23,7 @@ export default class UsersOnlineList extends React.Component{
         )
     }
 }
+
+
+
+export default socketConnect(UsersOnlineList);

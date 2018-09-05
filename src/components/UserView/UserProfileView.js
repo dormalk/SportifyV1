@@ -50,9 +50,6 @@ export class UserProfileView extends React.Component{
         }
         return true;
     }
-    isMyProfile = () => {
-
-    }
     render(){
         return(
             <div className="profile_view___non-edit">

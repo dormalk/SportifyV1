@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
+const {Users} = require('./utils/users.js');
 
 const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
@@ -11,20 +12,24 @@ var io = socketIO(server);
 
 app.use(express.static(publicPath));
 
+var users = new Users();
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 io.on('connection', (socket) => {
-  console.log('New user connected');
+  socket.on('online',(params,callback) => {
+    users.removeUser(params.uid);
+    users.addUser(socket.id,params.uid,params.name);
+    socket.broadcast.emit('updateOnlineList',users.getUserList());
 
-  socket.on('massage',(params,callback) => {
-    console.log(params);
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconected');
-  })
+    users.removeUser(params.uid);
+    socket.broadcast.emit('updateOnlineList',users.getUserList());
+  });
 });
 
 server.listen(port, () => {

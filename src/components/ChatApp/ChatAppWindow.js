@@ -1,6 +1,11 @@
 import React from 'react';
-import { socketConnect } from 'socket.io-react';
+import { connect } from 'react-redux';
 import UsersOnlineList from './UsersOnlineList';
+import { SocketProvider } from 'socket.io-react';
+import io from 'socket.io-client';
+const socket = io.connect(process.env.SOCKET_URL);
+
+
 
 export class ChatAppWindow extends React.Component{
 
@@ -9,12 +14,21 @@ export class ChatAppWindow extends React.Component{
     }
 
     render(){
+        socket.emit('online',{uid:this.props.uid,name:this.props.user.fname + " " + this.props.user.lname},(err) => {
+
+        });
         return(
-            <div>
-                <UsersOnlineList socket={this.props.socket}/>
-            </div>
+            <SocketProvider socket={socket}>
+                <UsersOnlineList/>
+            </SocketProvider>
         )
     }
 }
 
-export default socketConnect(ChatAppWindow);
+const mapStateToProps = (state, props) => ({
+    user: state.user,
+    uid: state.auth.uid
+});
+
+
+export default connect(mapStateToProps,undefined)(ChatAppWindow);
