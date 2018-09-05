@@ -9,18 +9,18 @@ class Users{
       return user;
     }
   
-    removeUser(id){
-      var user = this.getUser(id);
+    removeUser(uid){
+      var user = this.getUser(uid);
   
       if(user){
-        this.users = this.users.filter((user) => user.id !== id);
+        this.users = this.users.filter((user) => user.uid !== uid);
       }
   
       return user;
     }
   
-    getUser(id){
-      return this.users.filter((user) => user.id === id)[0];
+    getUser(uid){
+      return this.users.filter((user) => user.uid === uid)[0];
     }
   
     getUserList(){
