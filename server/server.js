@@ -21,14 +21,13 @@ app.get('*', (req, res) => {
 io.on('connection', (socket) => {
   socket.on('online',(params,callback) => {
     users.removeUser(socket.id);
-    users.addUser(socket.id,params.uid,params.name);
-    socket.broadcast.emit('updateOnlineList',users.getUserList());
-
+    users.addUser(socket.id,params.uid,params.name,"user_online");
+    io.emit('updateOnlineList',users.getUserList());
   });
 
   socket.on('disconnect', () => {
     users.removeUser(socket.id);
-    socket.broadcast.emit('updateOnlineList',users.getUserList());
+    io.emit('updateOnlineList',users.getUserList());
   });
 });
 

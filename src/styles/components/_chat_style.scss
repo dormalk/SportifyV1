@@ -1,0 +1,41 @@
+.chat_app{
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    height: 100%;
+    left: 0px;
+
+    .chat_user_online_list{
+        position: relative;
+        border-right: 1px solid $lite-grey;
+        flex-direction: row;
+        width: 250px;
+        height: 100%;
+        padding: $s-size 1px;  
+        
+        .msg_empty_list{
+            display: inline-block;
+            margin: auto auto;
+            font-size: 1.5rem;
+            color: darken($lite-grey,5);
+        }
+
+        .user_online{
+            display: inline-block;
+            width:100%;
+            font-size: 1.5rem;
+            background: white;
+            border-top: 1px solid lighten($lite-grey,15);
+            border-bottom: 1px solid lighten($lite-grey,15);            
+            text-align: center;
+            color: $dark-grey;
+            padding: 0.8rem;
+            cursor: pointer;
+        }
+
+        .user_online:hover{
+            background: lighten($lite-grey,15);
+        }
+
+    }
+}
