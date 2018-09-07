@@ -23,7 +23,10 @@ export class UsersOnlineList extends React.Component{
                             return user.uid !== this.props.uid;
                         }).map((user) => {
                             return (
-                                <div className={user.status}>{user.name}</div>
+                                <div 
+                                    className={user.status}
+                                    onClick={this.props.onUserClick.bind(this,user.uid)}
+                                >{user.name}</div>
                             )
                         })
                     ):(

@@ -10,7 +10,7 @@ class Users{
     }
   
     removeUser(socketId){
-      var user = this.getUser(socketId);
+      var user = this.getUserBySocket(socketId);
   
       if(user){
         this.users = this.users.filter((user) => user.socketId !== socketId);
@@ -19,10 +19,15 @@ class Users{
       return user;
     }
   
-    getUser(socketId){
+    getUserBySocket(socketId){
       return this.users.filter((user) => user.socketId === socketId)[0];
     }
-  
+
+    getUserById(uid){
+      return this.users.filter((user) => user.uid === uid)[0];
+    }
+
+
     getUserList(){
       return this.users;
     }
@@ -33,6 +38,8 @@ class Users{
           this.users[i].status = status;
       }
     }
+
+
   }
   
   module.exports = {Users};

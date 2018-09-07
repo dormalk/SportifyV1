@@ -25,6 +25,15 @@ io.on('connection', (socket) => {
     io.emit('updateOnlineList',users.getUserList());
   });
 
+  socket.on('sendMassage',(params) => { 
+    const otruser = users.getUserById(params.to);
+    const massage = {
+      msgId:  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+      ...params
+    }
+    socket.broadcast.to(otruser.socketId).emit('getMassage', massage);
+  });
+  
   socket.on('disconnect', () => {
     users.removeUser(socket.id);
     io.emit('updateOnlineList',users.getUserList());
