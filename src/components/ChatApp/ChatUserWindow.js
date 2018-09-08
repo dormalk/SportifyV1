@@ -5,8 +5,6 @@ export class ChatUserWindow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            otruid: this.props.otruid || '',
-            myuid: this.props.myuid || '',
             massage: '',
         }
     }
@@ -18,29 +16,40 @@ export class ChatUserWindow extends React.Component{
 
     onSendMassage = () => {
         if(this.state.massage){
-            this.props.socket.emit('sendMassage',{from:this.state.myuid,to:this.state.otruid,body:this.state.massage},(err) => {
+            const massage = {
+                from: this.props.myuid,
+                to: this.props.otruid,
+                body: this.state.massage
+            }
+
+            this.props.socket.emit('sendMassage',massage,(err) => {
                 if(err){
                     console.log('Error: ',err);
                 }
             });
-            this.setState({massage:''});    
+            this.setState({massage:''});
+            this.props.addMassageToArray(massage,massage.to);
         }
     }
 
-    onCloseRequest = () => {
-
-    }
     
     render(){
         return(
             <div>
                 <div>
                     <h3></h3>
-                    <button onClick={this.onCloseRequest}>X</button>
+                    <button onClick={this.props.onRequestClose.bind(this)}>X</button>
                 </div>
                 <div>
                     {this.props.massages && this.props.massages.map((massage) => {
-                        return (<div>{massage.body}</div>)
+                        return (
+                            <div className="chatwin">
+                                {massage.from === this.props.myuid?
+                                    <div className="me">{ massage.body }</div> :
+                                    <div className="other">{ massage.body }</div>
+                                }
+                            </div>
+                        )
                     })}
                 </div>
                 <div>

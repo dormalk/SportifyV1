@@ -19,7 +19,11 @@ export class ChatAppWindow extends React.Component{
         }
     }
     componentWillMount = () => {
-        socket.emit('online',{uid:this.props.uid,name:this.props.user.fname + " " + this.props.user.lname},(err) => {
+        const userOnline = {
+            uid:this.props.uid,
+            name:this.props.user.fname + " " + this.props.user.lname
+        }
+        socket.emit('online',userOnline,(err) => {
             if(err){
                 console.log('Error: ',err);
             }
@@ -27,28 +31,45 @@ export class ChatAppWindow extends React.Component{
     }
 
     onUserClick = (otruid) => {
+        this.onRequestClose();
         this.filteringMassages(otruid);
         this.setState({otruid});
+        this.forceUpdate();
     }
     
+    onRequestClose = () => {
+        this.setState({otruid: ''});
+    }
+
     filteringMassages = (otruid) => {
         const filterdMsg = this.state.massages.filter((massage) => { return  massage.from === otruid || massage.to === otruid});
         this.setState({filterdMsg});
         this.forceUpdate();
     }
-
+    
+    addMassageToArray = (massage,filterParam) => {
+        var massages = this.state.massages;
+        if(massages.length === 0){
+            massages.push(massage);
+            this.setState({massages});
+        }
+        else if(!massages[massages.length-1].msgId){
+            massages.push(massage);
+            this.setState({massages});
+        }
+        else if(massages[massages.length-1].msgId !== massage.msgId){
+            console.log(!!massages[massages.length-1].msgId);
+            massages.push(massage);
+            this.setState({massages});
+        }
+        console.log(massage);
+        console.log(massages);
+        this.filteringMassages(filterParam);
+    }
+    
     render(){
         socket.on('getMassage',(massage) => {
-            var massages = this.state.massages;
-            if(massages.length === 0){
-                massages.push(massage);
-                this.setState({massages});
-            }
-            else if(massages[massages.length-1].msgId !== massage.msgId){
-                massages.push(massage);
-                this.setState({massages});
-            }
-            this.filteringMassages(massage.from);
+            this.addMassageToArray(massage,massage.from);
         });
         return(
             <div className="chat_app">
@@ -58,6 +79,8 @@ export class ChatAppWindow extends React.Component{
                             otruid={this.state.otruid}
                             myuid={this.props.uid}
                             massages={this.state.filterdMsg}
+                            onRequestClose={this.onRequestClose}
+                            addMassageToArray={this.addMassageToArray}
                         />
                     </SocketProvider>
                 }
