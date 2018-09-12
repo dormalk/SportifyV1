@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
       ...params
     }
     socket.broadcast.to(otruser.socketId).emit('getMassage', massage);
+    socket.broadcast.to(otruser.socketId).emit('updateOnlineList',users.getUserList());
   });
   
   socket.on('disconnect', () => {

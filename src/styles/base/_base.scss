@@ -63,11 +63,6 @@ a{
 }
 
 
-.me{
-  background-color: blue;
-  color: white;
-}
-
-.other{
-  background-color: grey;
+input:active, input:focus{
+  outline:none;
 }

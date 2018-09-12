@@ -10,6 +10,18 @@ export class UsersOnlineList extends React.Component{
         }
     }
 
+    
+    hasFoundOnNotReadArray = (otruid) => {
+        const notReadArray = this.props.notReadArray;
+        for(var i = 0; i < notReadArray.length; i++){
+            if(notReadArray[i] === otruid){
+                return 'user_new_massage';
+            }
+        }
+        return 'user_online';
+    }
+
+
     render(){
         this.props.socket.on('updateOnlineList', (users) =>{
             this.setState({users});
@@ -24,7 +36,7 @@ export class UsersOnlineList extends React.Component{
                         }).map((user) => {
                             return (
                                 <div 
-                                    className={user.status}
+                                    className={this.props.otruid && this.props.otruid === user.uid?'user_online':this.hasFoundOnNotReadArray(user.uid)}
                                     onClick={this.props.onUserClick.bind(this,user.uid)}
                                 >{user.name}</div>
                             )

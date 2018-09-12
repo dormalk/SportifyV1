@@ -8,13 +8,25 @@ export class ChatUserWindow extends React.Component{
             massage: '',
         }
     }
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+    
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+    
+    scrollToBottom() {
+        this.el.scrollIntoView({ behavior: 'smooth' });
+    }
 
     onChangeMassage = (e) => {
         const massage = e.target.value;
         this.setState({massage});
     }
 
-    onSendMassage = () => {
+    onSendMassage = (e) => {
+        e.preventDefault();
         if(this.state.massage){
             const massage = {
                 from: this.props.myuid,
@@ -35,27 +47,33 @@ export class ChatUserWindow extends React.Component{
     
     render(){
         return(
-            <div>
-                <div>
-                    <h3></h3>
-                    <button onClick={this.props.onRequestClose.bind(this)}>X</button>
+            <div className="chatwin">
+                <div className="align_bottom">
+                    <div className="chat_header">
+                        <button onClick={this.props.onRequestClose.bind(this)}>X</button>
+                        <h3>חלון שיחה</h3>
+                    </div>
+                    <div className="chat_massage">
+                        {this.props.massages && this.props.massages.map((massage,key) => {
+                            if(key > this.props.massages.length - 50)
+                                return (
+                                    <div ref={el => { this.el = el }}>
+                                        {massage.from === this.props.myuid?
+                                            <div className="me">{ massage.body }</div> :
+                                            <div className="other">{ massage.body }</div>
+                                        }
+                                    </div>
+                                )
+                        })}
+                    </div>
+                    <div className="chat_footer">
+                        <form onSubmit={this.onSendMassage}>
+                            <input type="text" value={this.state.massage} onChange={this.onChangeMassage} autoFocus/>
+                            <input type="submit" value="<"/>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    {this.props.massages && this.props.massages.map((massage) => {
-                        return (
-                            <div className="chatwin">
-                                {massage.from === this.props.myuid?
-                                    <div className="me">{ massage.body }</div> :
-                                    <div className="other">{ massage.body }</div>
-                                }
-                            </div>
-                        )
-                    })}
-                </div>
-                <div>
-                    <input type="text" value={this.state.massage} onChange={this.onChangeMassage}/>
-                    <button onClick={this.onSendMassage}>></button>
-                </div>
+
             </div>
         )
     }

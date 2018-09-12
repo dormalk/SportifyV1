@@ -3,8 +3,8 @@ class Users{
       this.users = [];
     }
   
-    addUser(socketId,uid,name,status){
-      var user = {socketId,uid,name,status};
+    addUser(socketId,uid,name){
+      var user = {socketId,uid,name};
       this.users.push(user);
       return user;
     }
@@ -31,14 +31,6 @@ class Users{
     getUserList(){
       return this.users;
     }
-
-    setNewStatus(uid,status){
-      for(var i = 0 ; i < this.users.length; i++){
-        if(this.users[i].uid === uid)
-          this.users[i].status = status;
-      }
-    }
-
 
   }
   
