@@ -3,13 +3,17 @@ import UserProfileView from './UserProfileView';
 import { fatchUserById } from '../../selectors/UsersFiltering';
 import Footer from '../Footer';
 import ChatAppWindow from '../ChatApp/ChatAppWindow';
+import ChatAppWindowMobile from '../ChatApp/ChatAppWindowMobile';
+import MobileMenu from '../MobileMenu';
+
 
 
 export default class UserView extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            user: ''
+            user: '',
+            MobileChat: false
         }
     }
 
@@ -19,6 +23,11 @@ export default class UserView extends React.Component{
         })
     }
 
+    onOpenChat = () => {
+        const MobileChat = !this.state.MobileChat;
+        this.setState({MobileChat});
+    }
+    
     render(){
         return(
             <div className="main_screen">
@@ -26,7 +35,11 @@ export default class UserView extends React.Component{
                     {this.state.user && 
                     <UserProfileView user={this.state.user} uid={this.props.match.params.id}/>}
                     <ChatAppWindow/>
+                    {this.state.MobileChat && <ChatAppWindowMobile/>}
                 </div>
+                <MobileMenu
+                    onOpenChat={this.onOpenChat}
+                />
                 <Footer/>
             </div>
         )
