@@ -130,7 +130,7 @@ export class ChatAppWindow extends React.Component{
         });
 
         return(
-            <div className="chat_app show-for-desktop">
+            <div className="chat_app show-for-mobile">
                 {this.state.otruid &&
                     <SocketProvider socket={socket}>
                         <ChatUserWindow

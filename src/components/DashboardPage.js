@@ -2,14 +2,36 @@ import React from 'react';
 import ProfileView from './ProfileView'
 import Footer from './Footer'
 import ChatAppWindow from './ChatApp/ChatAppWindow';
+import MobileMenu from './MobileMenu';
+import ChatAppWindowMobile from './ChatApp/ChatAppWindowMobile';
 
-export default () => (
-    <div className="main_screen">
-        <div className="middle">
-            <ProfileView/>
-            <ChatAppWindow/>
-        </div>
-        <Footer/>
-    </div>
-);
+export default class DashboardPage extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            MobileChat: false
+        }
+    }
+
+    onOpenChat = () => {
+        const MobileChat = !this.state.MobileChat;
+        this.setState({MobileChat});
+    }
+    render(){
+        return(
+            <div className="main_screen">
+                <div className="middle">
+                    <ProfileView/>
+                    <ChatAppWindow/>
+                    {this.state.MobileChat && <ChatAppWindowMobile/>}
+                </div>
+                <MobileMenu
+                    onOpenChat={this.onOpenChat}
+                />
+                <Footer/>
+            </div>
+        )
+    }
+}
 

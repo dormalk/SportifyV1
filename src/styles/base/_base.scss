@@ -12,7 +12,7 @@ body {
   color: $dark-grey;
   font-family: Helvetica, Arial, sans-serif;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden; 
 }
 
 html, body, #app, #app>div,#app>div>div {

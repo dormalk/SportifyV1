@@ -22,6 +22,21 @@ export class UsersOnlineList extends React.Component{
     }
 
 
+    isFollows = (otruid) => {
+        const follows = this.props.follows;
+        for(var i = 0; i < follows.length; i++){
+            if(follows[i] === otruid)
+                return true;
+        }
+        return false;    
+    }
+
+    filterdUser = () => {
+        return this.state.users.filter((user) => {
+            return ((user.uid !== this.props.uid) && this.isFollows(user.uid));
+        });
+    }
+
     render(){
         this.props.socket.on('updateOnlineList', (users) =>{
             this.setState({users});
@@ -29,19 +44,15 @@ export class UsersOnlineList extends React.Component{
         return(
             <div className="chat_user_online_list">
                 {this.state.users && 
-                    this.state.users.length !== 1?
-                    (
-                        this.state.users.filter((user) => {
-                            return user.uid !== this.props.uid;
-                        }).map((user) => {
-                            return (
-                                <div 
-                                    className={this.props.otruid && this.props.otruid === user.uid?'user_online':this.hasFoundOnNotReadArray(user.uid)}
-                                    onClick={this.props.onUserClick.bind(this,user.uid)}
-                                >{user.name}</div>
-                            )
-                        })
-                    ):(
+                    this.filterdUser().length > 0 ?
+                    this.filterdUser().map((user) => {
+                        return (
+                            <div 
+                                className={this.props.otruid && this.props.otruid === user.uid?'user_online':this.hasFoundOnNotReadArray(user.uid)}
+                                onClick={this.props.onUserClick.bind(this,user.uid)}
+                            >{user.name}</div>
+                        )
+                    }):(
                         <div className="msg_empty_list">אין משתמשים מחוברים</div>
                     )
                 }

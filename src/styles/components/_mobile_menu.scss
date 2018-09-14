@@ -1,0 +1,17 @@
+.mobile_menu{
+    position: fixed;
+    bottom:0px;
+    width:100%;
+    flex-wrap: wrap;
+    height: 10%;
+    z-index: 1500;
+    button{
+        height: 100%;
+        width:25%;
+        background-color:$dark-grey;
+        color:white;
+        border-right: 0.5px solid $lite-grey;
+        border-left: 0.5px solid $lite-grey;
+
+    }
+}
