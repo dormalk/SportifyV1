@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import ChatAppWindow from '../ChatApp/ChatAppWindow';
 import ChatAppWindowMobile from '../ChatApp/ChatAppWindowMobile';
 import MobileMenu from '../MobileMenu';
-
+import {isMobile} from "react-device-detect";
 
 
 export default class UserView extends React.Component{
@@ -27,15 +27,15 @@ export default class UserView extends React.Component{
         const MobileChat = !this.state.MobileChat;
         this.setState({MobileChat});
     }
-    
+
     render(){
         return(
             <div className="main_screen">
                 <div className="middle">
                     {this.state.user && 
                     <UserProfileView user={this.state.user} uid={this.props.match.params.id}/>}
-                    <ChatAppWindow/>
-                    {this.state.MobileChat && <ChatAppWindowMobile/>}
+                    {!isMobile && <ChatAppWindow/>}
+                    {!isMobile && this.state.MobileChat && <ChatAppWindowMobile/>}
                 </div>
                 <MobileMenu
                     onOpenChat={this.onOpenChat}

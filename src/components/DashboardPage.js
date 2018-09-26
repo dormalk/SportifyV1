@@ -4,6 +4,8 @@ import Footer from './Footer'
 import ChatAppWindow from './ChatApp/ChatAppWindow';
 import MobileMenu from './MobileMenu';
 import ChatAppWindowMobile from './ChatApp/ChatAppWindowMobile';
+import {isMobile} from "react-device-detect";
+
 
 export default class DashboardPage extends React.Component{
 
@@ -23,8 +25,8 @@ export default class DashboardPage extends React.Component{
             <div className="main_screen">
                 <div className="middle">
                     <ProfileView/>
-                    <ChatAppWindow/>
-                    {this.state.MobileChat && <ChatAppWindowMobile/>}
+                    {!isMobile && <ChatAppWindow/>}
+                    {isMobile && this.state.MobileChat && <ChatAppWindowMobile/>}
                 </div>
                 <MobileMenu
                     onOpenChat={this.onOpenChat}

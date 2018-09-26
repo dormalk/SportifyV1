@@ -5044,6 +5044,10 @@ react-dates@12.3.0:
     react-moment-proptypes "^1.4.0"
     react-portal "^3.1.0"
 
+react-device-detect@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.5.9.tgz#e2e6438d5a5b9e97134fa9da6829369742c997d9"
+
 react-dom-factories@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.0.tgz#f43c05e5051b304f33251618d5bc859b29e46b6d"
