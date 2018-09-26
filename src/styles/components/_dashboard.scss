@@ -1,7 +1,7 @@
 .main_screen{
     display: inline-flex;
     flex-direction: column;
-    height: 82%;
+    height: 95%;
     width: 100%;
     .middle{
         display: inline-flex;
@@ -13,3 +13,9 @@
     }
 }
 
+
+@media (max-width: $desktop-breakpoint){
+    .main_screen{
+        height: 82%;
+    }
+}
