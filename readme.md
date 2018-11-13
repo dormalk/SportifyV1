@@ -3,6 +3,7 @@
 ## Implementation
   - React.js(+redux,jest,enzyme), SCSS, Node.js
   - DB: Firebase
+  - <b>Compatibility for mobile</b>
 ## What's include
   - Login page - Login by email and password. (Optinal login with google account)
   - Register page
