@@ -1,8 +1,20 @@
-# Git Commands
+# Sportify
+  Social network for athletics.
+## Implementation
+  - React.js(+redux,jest,enzyme), SCSS, Node.js
+  - DB: Firebase
+## What's include
+  - Login page - Login by email and password. (Optinal login with google account)
+  - Register page
+  - Profile page - Any ragistered user has profile page
+  - Friends system - Option to follow after users
+  - Online Chat - Chat with online friends(Must follow).
+  - Tests - Snapshots tests, Functionality tests, Mocks.
+## Firebase
+  - Works on front-end (not require implements of server side)
+  - Easy Api
+  - Account management
+  - Include file storage
+  - Include NoSql database with json records
 
-git init - Create a new git repo
-git status - View the changes to your project code
-git add - Add files to staging area
-git commit - Creates a new commit with files from staging area
-git log - View recent commits
-"# sportify" 
+  
